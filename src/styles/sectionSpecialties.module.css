@@ -1,0 +1,160 @@
+:root {
+  --light-blue: #ecf7fa;
+  --text-dark-blue: #395d6f;
+}
+
+.specialtiesSection {
+  padding: 4rem 1.5rem;
+  /* background-color: var(--light-blue); */
+  text-align: center;
+  transition: all 0.6s ease;
+  overflow-x: hidden;
+}
+
+.sectionTitle {
+  font-size: 3rem;
+  margin-bottom: 5rem;
+  color: var(--text-dark-blue);
+  font-family: 'Playfair Display', serif;
+}
+
+.circleWrapper {
+  position: relative;
+  width: 800px;
+  height: 800px;
+  margin: 0 auto;
+}
+
+.centerImage {
+  position: absolute;
+  top: 45%;
+  left: 53%;
+  width: 880px;
+  height: 880px;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.centerImage img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.specialtyItem {
+  position: absolute;
+  width: 260px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  color: var(--text-dark-blue);
+  font-size: 1rem;
+}
+
+.icon {
+  font-size: 2.8rem;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.label {
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: var(--text-dark-blue);
+}
+
+.desc {
+  font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+  line-height: 1.4;
+  color: var(--text-dark-blue);
+}
+
+/* Position each item around the circle */
+.item1 { top: 0%; left: 50%; }
+.item2 { top: 25%; left: 75%; }
+.item3 { top: 62%; left: 80%; }
+.item4 { top: 90%; left: 48%; }
+.item5 { top: 62%; left: 0%; }
+.item6 { top: 25%; left: 8%; }
+
+/* Scroll Animations */
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* === Mobile Responsive === */
+@media (max-width: 768px) {
+  .circleWrapper {
+    width: 100%;
+    height: 100vw;
+  }
+
+  .centerImage {
+    width: 380px;
+    height: 380px;
+  }
+
+  .specialtyItem {
+    width: 180px;
+    font-size: 0.9rem;
+  }
+
+  .icon {
+    font-size: 2rem;
+  }
+
+  .label {
+    font-size: 1.4rem;
+  }
+
+  .desc {
+    font-size: 1rem;
+  }
+
+  /* Prevent overflow of left-aligned items */
+  .item5 { left: 12%; }
+  .item6 { left: 18%; }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 2.2rem;
+  }
+
+  .circleWrapper {
+    width: 100%;
+    height: 90vw;
+  }
+
+  .centerImage {
+    width: 320px;
+    height: 320px;
+  }
+
+  .specialtyItem {
+    width: 160px;
+    font-size: 0.85rem;
+  }
+
+  .label {
+    font-size: 1.2rem;
+  }
+
+  .desc {
+    font-size: 0.95rem;
+  }
+
+  .item5 { left: 14%; }
+  .item6 { left: 22%; }
+}

@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --footer-bg: #3a2d28; /* Deep rich brown */
+  --text-light: #f9f7f5;
+  --accent-light: #dabaa0;
+}
+
+.footer {
+  background-color: var(--footer-bg);
+  color: var(--text-light);
+  padding: 4rem 2rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footerTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.footerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 1.1rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.footerLinks a {
+  color: var(--accent-light);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.footerLinks a:hover {
+  color: var(--text-light);
+  border-bottom: 2px solid var(--accent-light);
+}
+
+.footerButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.footerButtons a {
+  padding: 0.75rem 1.6rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid var(--accent-light);
+  color: var(--accent-light);
+  background-color: transparent;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footerButtons a:hover {
+  background-color: var(--accent-light);
+  color: var(--footer-bg);
+}
+
+.socialIcons {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.socialIcons a {
+  color: var(--accent-light);
+  transition: color 0.3s ease;
+}
+
+.socialIcons a:hover {
+  color: var(--text-light);
+}
+
+.copyText {
+  margin-top: 3rem;
+  font-size: 0.95rem;
+  color: var(--accent-light);
+}
+
+.credit {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--accent-light);
+}
+
+.credit a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.credit a:hover {
+  text-decoration: underline;
+}
+
+/* === Mobile Fix === */
+@media (max-width: 480px) {
+  .footerLinks {
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 1rem;
+  }
+
+  .footerButtons a {
+    font-size: 0.95rem;
+  }
+
+  .credit {
+    font-size: 0.85rem;
+  }
+}

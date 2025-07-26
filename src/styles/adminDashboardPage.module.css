@@ -1,0 +1,119 @@
+.dashboardHome {
+    padding: 2rem 1rem;
+    background-color: var(--off-white);
+    min-height: 100vh;
+    margin-top: -40px;
+  }
+  
+  .welcomeSection {
+    text-align: center;
+    margin-bottom: 4.5rem;
+  }
+  
+  .welcomeSection h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--text-color);
+  }
+  
+  .welcomeSection p {
+    font-size: 1rem;
+    color: var(--deep-brown);
+    margin-top: 0.5rem;
+  }
+  
+  .quickLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .card {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-3px);
+  }
+  
+  .card h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    font-family: 'Fraunces', serif;
+  }
+  
+  .card p {
+    font-size: 0.95rem;
+    margin: 0.2rem 0 0;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  
+  /* Emoji icon or image */
+  .icon {
+    font-size: 2.2rem;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  
+  /* Optional: If using image instead of emoji */
+  /* .icon img {
+    width: 40px;
+    height: 40px;
+  } */
+  
+  /* Gradients */
+  .card1 {
+    background: linear-gradient(135deg, #f6d365, #fda085);
+  }
+  
+  .card2 {
+    background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+  }
+  
+  .card3 {
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+  }
+  
+  .card4 {
+    background: linear-gradient(135deg, #c2e9fb, #a1c4fd);
+  }
+  
+  .card5 {
+    background: linear-gradient(135deg, #fddb92, #d1fdff);
+  }
+  
+  .card6 {
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  }
+  
+  /* Mobile-friendly layout */
+  @media (min-width: 768px) {
+    .dashboardHome {
+      padding: 3rem 4rem;
+    }
+  
+    .card {
+      padding: 2rem;
+    }
+  
+    .icon {
+      font-size: 2.5rem;
+    }
+  
+    .card h3 {
+      font-size: 1.4rem;
+    }
+  
+    .card p {
+      font-size: 1rem;
+    }
+  }
+  

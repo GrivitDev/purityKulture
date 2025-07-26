@@ -1,0 +1,257 @@
+.reviewCard {
+    background: var(--cream);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    margin-bottom: 3rem;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--deep-brown);
+    max-width: 100%;
+    width: 100%;
+    max-height: 240px;
+  }
+  
+  .reviewTitleText {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0rem;
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .reviewName {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+    color: var(--mauve);
+  }
+  
+  .reviewStyle {
+    font-style: italic;
+    color: var(--rosewood);
+  }
+  
+  .reviewStars {
+    font-size: 1.4rem;
+    color: gold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .reviewDescription {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--deep-brown);
+    margin-bottom: 1rem;
+  }
+  
+  .readMoreBtn {
+    color: var(--rosewood);
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  /* ----------------- MEDIA COLLAGE ------------------ */
+  .mediaContainer {
+    display: grid;
+    width: 100%;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Common media item styling */
+  .mediaItem {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .reviewImage,
+  .reviewVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0.8rem;
+  }
+  
+  /* Media count: 1 item */
+  .mediaContainer:has(.mediaItem1-0) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+  
+  /* Media count: 2 items */
+  .mediaContainer:has(.mediaItem2-1) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+  }
+  
+  /* Media count: 3 items */
+  .mediaContainer:has(.mediaItem3-2) {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .mediaItem3-0 {
+    grid-row: 1 / span 2;
+    grid-column: 1;
+  }
+  .mediaItem3-1 {
+    grid-row: 1;
+    grid-column: 2;
+  }
+  .mediaItem3-2 {
+    grid-row: 2;
+    grid-column: 2;
+  }
+  
+  /* Media count: 4 items */
+  .mediaContainer:has(.mediaItem4-3) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .mediaItem4-0 {
+    grid-row: 1;
+    grid-column: 1;
+  }
+  .mediaItem4-1 {
+    grid-row: 1;
+    grid-column: 2;
+  }
+  .mediaItem4-2 {
+    grid-row: 2;
+    grid-column: 1;
+  }
+  .mediaItem4-3 {
+    grid-row: 2;
+    grid-column: 2;
+  }
+  
+  /* Media count: 5 items */
+  .mediaContainer:has(.mediaItem5-4) {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .mediaItem5-0 {
+    grid-row: 1 / span 2;
+    grid-column: 1;
+  }
+  .mediaItem5-1 {
+    grid-row: 1;
+    grid-column: 2;
+  }
+  .mediaItem5-2 {
+    grid-row: 1;
+    grid-column: 3;
+  }
+  .mediaItem5-3 {
+    grid-row: 2;
+    grid-column: 2;
+  }
+  .mediaItem5-4 {
+    grid-row: 2;
+    grid-column: 3;
+  }
+  
+  /* -------------- LIGHTBOX MODAL ---------------- */
+  .lightboxOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  
+  .lightboxContent {
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  
+  .lightboxContent img,
+  .lightboxContent video {
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    border-radius: 12px;
+  }
+  
+  /* -------------- LIKE + ORDER BUTTON -------------- */
+  .likeContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.2rem;
+  }
+  
+  .likeBtn {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--rosewood);
+  }
+  
+  .likeCount {
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+    font-family: 'Fraunces', serif;
+  }
+  
+  /* -------------- RESPONSIVE -------------- */
+  @media (max-width: 768px) {
+    .reviewCard {
+      padding: 1.2rem;
+    }
+  
+    .reviewTitleText {
+      font-size: 1.6rem;
+    }
+  
+    .reviewDescription {
+      font-size: 1rem;
+    }
+  
+    .mediaContainer {
+      aspect-ratio: auto;
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: auto;
+    }
+  
+    .reviewImage,
+    .reviewVideo {
+      border-radius: 0.6rem;
+    }
+  }
+  
+  /* Force all cards to the same height */
+.reviewCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 520px; 
+}
+
+.reviewDescription {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.expandedText {
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}

@@ -1,0 +1,66 @@
+.galleryContainer {
+  padding: 2rem 1rem;
+  background-color: var(--background);
+  color: var(--text-color);
+  font-family: 'Fraunces', serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pageHeader {
+  margin-top: 50px;
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 1rem;
+}
+
+.brandLogo {
+  width: 150px;
+  height: auto;
+}
+
+.brandName {
+  font-size: 2rem;
+  color: var(--deep-brown);
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  margin-top: -50px;
+}
+
+.introText {
+  font-size: 1.2rem;
+  color: var(--deep-brown);
+  line-height: 1.6;
+}
+
+.section {
+  width: 100%;
+  max-width: 1400px;
+  margin-bottom: 4rem;
+  padding: 0 1rem;
+}
+
+.sectionTitle {
+  font-size: 2.2rem;
+  margin-bottom: 0.2rem;
+  font-weight: 600;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--text-color);
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .pageHeading {
+    font-size: 2.2rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.6rem;
+  }
+
+  .introText {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+}

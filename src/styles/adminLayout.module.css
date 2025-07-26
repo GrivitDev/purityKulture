@@ -1,0 +1,26 @@
+.layoutGrid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 100vh;
+    background-color: var(--background);
+    position: relative;
+  }
+  
+  
+  /* Main Content */
+  .adminMain {
+    padding: 2rem;
+    background-color: var(--off-white);
+  }
+  
+  /* On small screens, sidebar is hidden (toggle handled in AdminNav) */
+  @media (max-width: 768px) {
+    .layoutGrid {
+      grid-template-columns: 1fr;
+    }
+  
+    .adminMain {
+      padding: 1rem;
+    }
+  }
+  

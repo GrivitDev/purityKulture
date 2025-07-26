@@ -1,0 +1,248 @@
+:root {
+  --card-bg: #fff;
+  --card-shadow: rgba(0, 0, 0, 0.08);
+  --border-color: var(--cream);
+  --text-color: var(--deep-brown);
+  --primary: var(--lavender);
+  --accent: var(--dusty-pink);
+  --font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+}
+
+/* ========== CATEGORY BANNER ========== */
+.categoryBanner {
+  position: relative;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+}
+
+.categoryBanner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(31, 30, 30, 0.527);
+  z-index: 1;
+}
+
+.categoryTitle {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-family);
+  color: #f8d5d5;
+  font-size: 3rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* ========== RESPONSIVE STYLES GRID ========== */
+.stylesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+/* ========== STYLE CARD ========== */
+.styleCard {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--card-shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+  margin-bottom: 40px;
+    justify-content: space-between;
+}
+
+.styleCard:hover {
+  transform: scale(1.01);
+}
+
+.styleImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  cursor: pointer;
+  aspect-ratio: 4 / 5;
+}
+
+/* ========== CARD CONTENT ========== */
+.cardContent {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.styleTitle {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #3b2b24; /* Darker deep-brown for stronger contrast */
+  font-family: var(--font-family);
+}
+
+/* ========== DESCRIPTION TRUNCATION ========== */
+.descriptionWrapper {
+  font-size: 0.95rem;
+  color: #4a3b34; /* Boost contrast slightly */
+  line-height: 1.5;
+  max-height: 4.5em; /* approx 3 lines */
+  overflow: hidden;
+}
+
+.descriptionWrapper.expanded {
+  max-height: none;
+}
+
+.styleDescription {
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.readMoreButton {
+  margin-top: 0.25rem;
+  background: none;
+  border: none;
+  color: #7d4c73; /* Richer lavender tone */
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  align-self: flex-start;
+}
+
+.readMoreButton:hover {
+  text-decoration: underline;
+}
+
+/* ========== PRICE ========== */
+.priceWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.oldPriceBlock {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.oldPrice {
+  font-size: 1rem;
+  color: #a88;
+  text-decoration: line-through;
+  font-weight: 600;
+}
+
+.discount {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--rosewood);
+  background-color: rgba(240, 200, 200, 0.3);
+  padding: 0.15rem 0.4rem;
+  border-radius: 16px;
+}
+
+.currentPrice {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-color);
+  font-family: var(--font-family);
+}
+
+
+/* ========== REACTIONS ========== */
+.reactionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  margin-top: 0.5rem;
+}
+
+.reactionButton {
+  background-color: var(--accent);
+  border: none;
+  padding: 0.2rem 0.2rem;
+  font-size: 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+.reactionButton:hover {
+  background-color: var(--primary);
+}
+
+/* ========== LIGHTBOX IMAGE PREVIEW ========== */
+.lightboxOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightboxContent {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.lightboxImage {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+/* ========== SEE MORE BUTTON ========== */
+.showMoreWrapper {
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.showMoreButton {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 25px;
+  background-color: var(--primary);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.showMoreButton:hover {
+  background-color: var(--mauve);
+}
+
+@media (min-width: 768px) {
+  .categoryTitle {
+    font-size: 7rem;
+  }
+  .reactionButton {
+    padding: 0.2rem 0.8rem;
+    font-size: 1.1rem;
+  }
+  .reactionRow {
+    gap: 0.6rem;
+  }
+  .stylesGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  } 
+}
+

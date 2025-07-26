@@ -1,0 +1,243 @@
+:root {
+  --white: #ffffff;
+  --off-white: #fdf5f1;
+  --cream: #f8f5f0;
+  --light-ivory: #f8e6e0;
+  --lavender: #b9a7c3;
+  --dusty-blue: #a5c9d1;
+  --dusty-pink: #eed5dc;
+  --deep-brown: #6b4c3b;
+  --mauve: #9d7ba6;
+  --rosewood: #a4696a;
+
+  --primary-color: var(--lavender);
+  --secondary-color: var(--dusty-blue);
+  --accent-color: var(--dusty-pink);
+  --text-color: var(--deep-brown);
+  --bg-color: var(--off-white);
+  --border-color: var(--cream);
+}
+
+.container {
+  padding: 2rem 1rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Cormorant Garamond', serif;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.heading {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: var(--deep-brown);
+  text-align: center;
+  font-family: 'Fraunces', serif;
+}
+
+.uploadSection {
+  background-color: var(--cream);
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.uploadSection input[type="file"] {
+  display: block;
+  font-family: inherit;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.uploadSection button {
+  background-color: var(--deep-brown);
+  color: var(--white);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-family: 'Fraunces', serif;
+  font-size: 0.95rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+}
+
+.uploadSection button:hover {
+  background-color: var(--rosewood);
+}
+
+.message {
+  font-size: 0.9rem;
+  color: var(--mauve);
+  text-align: center;
+}
+
+/* === FILTER BUTTONS === */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.filters button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-family: 'Fraunces', serif;
+  background-color: var(--cream);
+  border: 1px solid var(--rosewood);
+  border-radius: 4px;
+  color: var(--deep-brown);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.filters button:hover {
+  background-color: var(--deep-brown);
+  color: var(--white);
+}
+
+.filters .active {
+  background-color: var(--rosewood);
+  color: var(--white);
+  border-color: var(--deep-brown);
+}
+
+/* === CARD GRID === */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* === CARD STYLE === */
+.card {
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.card img,
+.card video {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* === CARD BUTTONS === */
+.cardControls {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.cardControls button {
+  background-color: var(--dusty-blue);
+  color: var(--white);
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: 'Fraunces', serif;
+  flex: 1;
+  min-width: 45%;
+}
+
+.cardControls button:hover {
+  background-color: var(--deep-brown);
+}
+
+/* === REACTIONS === */
+.reactions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.reactions button {
+  background-color: var(--dusty-pink);
+  border: 1px solid var(--rosewood);
+  color: var(--deep-brown);
+  padding: 0.4rem 0.7rem;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Fraunces', serif;
+  transition: background-color 0.3s ease;
+}
+
+.reactions button:hover {
+  background-color: var(--rosewood);
+  color: var(--white);
+}
+
+/* === MEDIA QUERIES FOR MOBILE === */
+@media screen and (max-width: 480px) {
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .uploadSection {
+    padding: 1rem;
+  }
+
+  .uploadSection input[type="file"] {
+    font-size: 1rem;
+  }
+
+  .uploadSection button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .cardControls button {
+    min-width: 100%;
+  }
+
+  .filters {
+    justify-content: flex-start;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+  }
+
+  .filters button {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 0.75rem;
+  }
+}

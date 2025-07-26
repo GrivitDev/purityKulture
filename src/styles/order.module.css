@@ -1,0 +1,133 @@
+.orderBtn {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 0.4rem 1rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 800;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: auto;
+}
+
+.orderBtn:hover {
+  background-color: var(--secondary-color);
+}
+
+@media (min-width: 768px) {
+  .orderBtn {
+    padding: 0.6rem 1.2rem;
+    font-size: 1.3rem;
+    border-radius: 12px;
+  }
+}
+
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(19, 1, 1, 0.767);
+  backdrop-filter: blur(4px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background-color: var(--background);
+  color: var(--foreground);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 800px;
+  font-family: 'Cormorant Garamond', serif;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.25s ease-out;
+}
+
+.modal h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.modal input {
+  padding: 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1.5rem;
+  background-color: var(--white);
+  color: var(--text-color);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+}
+
+.modal input::placeholder {
+  color: var(--deep-brown);
+  font-weight: 600;
+}
+
+.modal input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--accent-color);
+}
+
+.modal button[type="submit"] {
+  background-color: var(--deep-brown);
+  color: var(--white);
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1rem;
+  font-family: 'Fraunces', serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal button[type="submit"]:hover {
+  background-color: var(--rosewood);
+}
+
+.modal p {
+  margin-top: 1rem;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 800;
+}
+
+.closeBtn {
+  margin-top: 1rem;
+  background: none;
+  color: var(--text-color);
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: 'Playfair Display', serif;
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

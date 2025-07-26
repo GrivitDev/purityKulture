@@ -1,0 +1,83 @@
+:root {
+  --white: #ffffff;
+  --off-white: #fdf5f1;
+  --cream: #f8f5f0;
+  --light-ivory: #f8e6e0;
+
+  --lavender: #b9a7c3;
+  --dusty-blue: #a5c9d1;
+  --dusty-pink: #eed5dc;
+
+  --deep-brown: #6b4c3b;
+  --mauve: #9d7ba6;
+  --rosewood: #a4696a;
+
+  --primary-color: var(--lavender);
+  --secondary-color: var(--dusty-blue);
+  --accent-color: var(--dusty-pink);
+  --text-color: var(--deep-brown);
+  --bg-color: var(--off-white);
+  --border-color: var(--cream);
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Default padding for all sections */
+.page > section {
+  padding: 5rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Section-specific margin balancing */
+.page > section:not(:first-child) {
+  margin-top: -2rem;
+}
+
+/* Hide scrollbars for aesthetic on desktop */
+body::-webkit-scrollbar {
+  width: 6px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--dusty-blue);
+  border-radius: 4px;
+}
+
+/* Global Scroll Animation States */
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.7s ease-out;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .page > section {
+    padding: 4rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page > section {
+    padding: 3.5rem 1.2rem;
+  }
+}

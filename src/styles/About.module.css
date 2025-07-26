@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --bg-fair: #fbf7f3;
+  --text-dark: #3a2d28;
+  --accent: #b9a7c3;
+}
+
+.container {
+  background: var(--bg-fair);
+  color: var(--text-dark);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Hero */
+.aboutHero {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  background: url('/images/about2.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 2rem;
+}
+
+.aboutHeroOverlay {
+  background: rgba(207, 188, 188, 0.932);
+  border-radius: 20px;
+  padding: 2.5rem 3rem;
+  max-width: 800px;
+  max-height: 240px;
+  text-align: right;
+  animation: fadeInUp 1s ease;
+  margin-right: -3rem;
+  margin-bottom: -25px;
+}
+
+.aboutHeroOverlay h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+.aboutHeroOverlay p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #5a3e36;
+}
+
+/* Brand Story */
+.story {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 4rem 2rem;
+}
+.storyText {
+  flex: 1;
+}
+.storyImage {
+  flex: 1;
+}
+.storyText h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+.storyText p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.curvedImage {
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+/* Meet the Genius */
+.team {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 4rem 2rem;
+}
+.teamBio {
+  flex: 1;
+}
+.teamImage {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.portraitImage {
+  border-radius: 50%;
+  width: 450px;
+  height: 420px;
+  object-fit: cover;
+  border: 5px solid var(--accent);
+}
+.teamBio h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+.teamBio p {
+  line-height: 1.7;
+  margin-bottom: 0.8rem;
+}
+
+/* Mission, Vision, Values */
+.mvValues {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: center;
+  padding: 4rem 2rem;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 2.5rem 1.6rem;
+  max-width: 320px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  border: 2px solid #f2e7de;
+  backdrop-filter: blur(4px);
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.card p, .card ul {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+.card ul li {
+  margin: 0.4rem 0;
+}
+.iconWrap img {
+  width: 264px;
+  height: 264px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+/* Faith & Fashion + Sustainability */
+.sectionWithImage, .sectionWithImageAlt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 4rem 2rem;
+}
+.sectionWithImageAlt {
+  flex-direction: row-reverse;
+}
+.textBlock, .imageBlock {
+  flex: 1;
+}
+.textBlock h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+.textBlock p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+.imageBlock img {
+  border-radius: 1.5rem;
+  width: 100%;
+  object-fit: cover;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* What Sets Us Apart */
+.diff {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.diff h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+.barsContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.barGroup {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.barGroup span {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  margin-bottom: 0.6rem;
+}
+.progressBar {
+  height: 22px;
+  background: #eee2db;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+.barFill {
+  height: 100%;
+  background: var(--accent);
+  width: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-radius: 20px;
+  padding-right: 10px;
+  font-size: 0.95rem;
+  color: #fff;
+  font-weight: 600;
+  transition: width 1.5s ease;
+}
+.barDescription {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #5a3e36;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .story,
+  .team,
+  .sectionWithImage,
+  .sectionWithImageAlt {
+    flex-direction: column;
+    text-align: center;
+  }
+  .aboutHeroOverlay {
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+  .aboutHeroOverlay h1 {
+    font-size: 2rem;
+  }
+  .aboutHeroOverlay p {
+    font-size: 1rem;
+  }
+  .portraitImage {
+    width: 260px;
+    height: 260px;
+  }
+}

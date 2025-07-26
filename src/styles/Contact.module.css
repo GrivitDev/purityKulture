@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --accent: #b9a7c3;
+  --text: #3a2d28;
+  --bg: #fbf7f3;
+  --whatsapp: #25D366;
+}
+
+.contactContainer {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Hero Section */
+
+.contactHero {
+    height: 70vh;
+    background: url('/images/contact.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
+    position: relative; /* Required for absolute children */
+  }
+  
+  .heroOverlay {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    background: rgba(230, 217, 217, 0.87);
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    text-align: right;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 850px;
+    margin-right: -25px;
+  }
+  
+
+.heroOverlay h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.heroOverlay p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Contact Cards */
+.contactDetails {
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contactCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.contactCard:hover {
+  transform: translateY(-4px);
+}
+
+.contactCard svg {
+  font-size: 1.4rem;
+  color: var(--accent);
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+/* Map */
+.mapSection {
+    padding: 3rem 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .mapSection h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .mapSection p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+
+/* CTA Section */
+.ctaSection {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.ctaSection h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.ctaSection p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.joinButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.whatsappBtn,
+.whatsappBtnSecondary {
+  text-decoration: none;
+  padding: 0.9rem 1.8rem;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  font-size: 1rem;
+  width: fit-content;
+}
+
+.whatsappBtn {
+  background-color: var(--whatsapp);
+  color: #fff;
+}
+
+.whatsappBtn:hover {
+  background-color: #1ebe5d;
+}
+
+.whatsappBtnSecondary {
+  background-color: #e9ddf3;
+  color: var(--text);
+  border: 1px solid var(--accent);
+}
+
+.whatsappBtnSecondary:hover {
+  background-color: #d6c7e9;
+}
+
+/* Footer */
+.footer {
+  padding: 3rem 1rem 2rem;
+  text-align: center;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 2.2rem;
+  font-size: 1.8rem;
+  margin-top: 2rem;
+}
+
+.socialIcons a {
+  color: var(--text);
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.socialIcons a:hover {
+  transform: scale(1.2);
+  color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .heroOverlay h1 {
+    font-size: 2rem;
+  }
+
+  .heroOverlay p {
+    font-size: 1rem;
+  }
+
+  .ctaSection h2 {
+    font-size: 1.8rem;
+  }
+
+  .socialIcons {
+    gap: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .contactCard {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+    .heroOverlay {
+      right: 1rem;
+      left: 1rem;
+      bottom: 1rem;
+      padding: 1.5rem 1.2rem;
+      text-align: center;
+    }
+  
+    .heroOverlay h1 {
+      font-size: 2rem;
+    }
+  
+    .heroOverlay p {
+      font-size: 1rem;
+    }
+  }
+  

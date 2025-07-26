@@ -1,0 +1,52 @@
+.collectionsPage {
+  padding: 2rem 1.5rem;
+  max-width: 1400px;
+  margin: 50px auto 0;
+  background-color: var(--background);
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.brandHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.brandLogo {
+  width: 150px;
+  height: auto;
+}
+
+.brandName {
+  font-size: 2rem;
+  color: var(--text-color);
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+}
+
+.pageIntro {
+  font-size: 1.3rem;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 1rem;
+  font-family: 'Fraunces', serif;
+}
+
+.pageTitle {
+  font-size: 2.4rem;
+  text-align: center;
+  margin: 2rem 0 1rem;
+  font-family: 'Bodoni Moda', serif;
+  color: var(--deep-brown);
+}
+
+.statusMessage {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 1.2rem;
+  color: var(--deep-brown);
+  font-family: 'Fraunces', serif;
+}

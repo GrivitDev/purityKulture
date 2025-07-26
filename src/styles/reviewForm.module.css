@@ -1,0 +1,178 @@
+.reviewForm {
+    background: var(--cream);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--deep-brown);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  
+  .formHeading {
+    font-size: 2rem;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 1.5rem;
+    color: var(--rosewood);
+    text-align: center;
+  }
+  
+  .formGroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .inputField {
+    flex: 1 1 100%;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.8rem;
+    border: 1px solid #ddd;
+    background: white;
+    font-family: inherit;
+  }
+  
+  .ratingBlock {
+    margin-bottom: 1.5rem;
+  }
+  
+  .starRow {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+  }
+  
+  .star {
+    font-size: 1.8rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  
+  .starFilled {
+    color: gold;
+  }
+  
+  .textArea {
+    width: 100%;
+    min-height: 120px;
+    resize: vertical;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 0.8rem;
+    border: 1px solid #ddd;
+    font-family: inherit;
+    margin-bottom: 1.5rem;
+    background: white;
+  }
+  
+  .fileBlock {
+    margin-bottom: 1.5rem;
+  }
+  
+  .fileBlock input[type="file"] {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .previewGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .previewCard {
+    position: relative;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+  }
+  
+  .previewCard img,
+  .previewCard video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .removePreviewBtn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .checkboxWrapper {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .checkboxWrapper input {
+    margin-right: 0.5rem;
+  }
+  
+  .submitButton {
+    background: var(--rosewood);
+    color: white;
+    padding: 0.9rem 2rem;
+    border: none;
+    border-radius: 0.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+  }
+  
+  .submitButton:hover {
+    background: #742c2c;
+  }
+  
+  .submitButton:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  
+  @media (max-width: 768px) {
+    .formGroup {
+      flex-direction: column;
+    }
+  
+    .formHeading {
+      font-size: 1.6rem;
+    }
+  
+    .inputField,
+    .textArea {
+      font-size: 0.95rem;
+    }
+  
+    .submitButton {
+      font-size: 0.95rem;
+      padding: 0.8rem 1rem;
+    }
+  
+    .previewGrid {
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+  }
+  

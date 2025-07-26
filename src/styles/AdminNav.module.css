@@ -1,0 +1,161 @@
+:root {
+    --navbar-bg: #f2e1d9;      /* light peach-pink */
+    --text-color: #321b12;     /* bold deep cocoa */
+    --hover-bg: #b75656;       /* rich rose red */
+    --hover-text: #ffffff;     /* pure white */
+    --rosewood: #a43c3c;       /* vivid wine red for buttons */
+  }
+  
+  
+
+/* === Default Desktop Styles === */
+.navbar {
+    background-color: var(--navbar-bg);
+    color: var(--text);
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    /* height: 100vh; */
+    width: 100%;
+    max-width: 280px;
+    position: sticky;
+    top: 0;
+    transition: left 0.3s ease;
+    z-index: 10;
+  }
+  
+  /* Hide menu toggle by default */
+  .mobileMenuButton {
+    display: none;
+  }
+  
+  /* Logo and layout */
+  .logoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .logo {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* Sidebar heading */
+  .navbar h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Sidebar nav list */
+  .navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+  
+  /* Each nav item */
+  .navbar li {
+    width: 100%;
+  }
+  
+  /* Nav link */
+  .navbar li a {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.7rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    background-color: transparent;
+  }
+  
+  /* Hover state */
+  .navbar li a:hover {
+    background-color: var(--hover-bg);
+    color: var(--hover-text);
+    transform: translateX(5px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Click effect */
+  .navbar li a:active {
+    transform: scale(0.98);
+  }
+  
+  /* Logout button styled */
+  .adminLogoutButton {
+    background-color: var(--rosewood);
+    color: var(--hover-text);
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.65rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 50px;
+  }
+  
+  .adminLogoutButton:hover {
+    background-color: #6d1800;
+    transform: translateX(5px);
+  }
+  
+  .adminLogoutButton:active {
+    transform: scale(0.98);
+  }
+  
+  
+  /* === Mobile Overrides === */
+  @media (max-width: 768px) {
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 70%;
+      max-width: none;
+      height: 100vh;
+      background-color: var(--navbar-bg);
+      transition: left 0.3s ease;
+      z-index: 999;
+    }
+  
+    .navbar.open {
+      left: 0;
+    }
+  
+    .mobileMenuButton {
+      display: block;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      background-color: brown;
+      border-radius: 12px;
+      padding: 0px 8px 4px 10px;
+      border: none;
+      font-size: 2rem;
+      z-index: 1001;
+      cursor: pointer;
+      color: var(--text);
+      margin-top: -10px;
+      margin-left: -10;
+    }
+  }
+  
+  

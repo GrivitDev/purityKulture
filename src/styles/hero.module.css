@@ -1,0 +1,272 @@
+.heroSection {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    transition: background-color 1s ease;
+  }
+  
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+  
+  .active {
+    opacity: 1;
+    z-index: 1;
+  }
+  
+  .imageBlock {
+    flex: 1;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .heroImage {
+    height: 100%;
+    width: auto;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 1s ease;
+  }
+  
+  .imageFloat {
+    transform: scale(1.04);
+  }
+  
+  /* === TEXT INSIDE IMAGE === */
+  .textBlock {
+    position: absolute;
+    z-index: 2;
+    max-width: 50%;
+    padding: 2rem;
+    border-radius: 1.2rem;
+    backdrop-filter: blur(6px);
+    background-color: rgba(255, 255, 255, 0);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .textLeft {
+    left: 5%;
+    text-align: left;
+  }
+  
+  .textRight {
+    right: 5%;
+    text-align: right;
+  }
+  
+  .heroHeading {
+    font-size: 6rem;
+    margin-bottom: 1.2rem;
+    color: var(--text-color); /* deep brown */
+    /* -webkit-text-stroke: 1px var(--border-color); */
+    text-shadow: 
+      -1px -1px 0 var(--border-color),
+       1px -1px 0 var(--border-color),
+      -1px  1px 0 var(--border-color),
+       1px  1px 0 var(--border-color);
+    animation-duration: 2s;
+    animation-fill-mode: both;
+  }
+  
+  .heroSubtext {
+    font-size: 2.6rem;
+    max-width: 100%;
+    color: var(--text-color);
+    /* -webkit-text-stroke: 0.7px var(--border-color); */
+    text-shadow: 
+      -1px -1px 0 var(--border-color),
+       1px -1px 0 var(--border-color),
+      -1px  1px 0 var(--border-color),
+       1px  1px 0 var(--border-color);
+    animation-duration: 2s;
+    animation-fill-mode: both;
+  }
+  
+  
+  /* === ANIMATIONS === */
+  @keyframes typewriterLeft {
+    from {
+      width: 0;
+      opacity: 0;
+    }
+    to {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes zoomIn {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes subFadeInDelay {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes subSlideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes subFloatUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    50% {
+      opacity: 0.5;
+      transform: translateY(15px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .typewriterLeft {
+    animation: typewriterLeft 2.5s steps(30, end) forwards;
+  }
+  
+  .fadeInRight {
+    animation: fadeInRight 2s ease forwards;
+  }
+  
+  .zoomIn {
+    animation: zoomIn 1.5s ease forwards;
+  }
+  
+  .subFadeInDelay {
+    animation: subFadeInDelay 2s ease forwards;
+  }
+  
+  .subSlideIn {
+    animation: subSlideIn 2s ease forwards;
+  }
+  
+  .subFloatUp {
+    animation: subFloatUp 2.5s ease forwards;
+  }
+  
+  /* === SCROLL ANIMATION CLASSES === */
+  .visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.6s ease-in-out;
+  }
+  
+  .hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+  }
+  
+  /* === MOBILE RESPONSIVENESS === */
+  @media (max-width: 1024px) {
+    .heroHeading {
+      font-size: 4rem;
+    }
+  
+    .heroSubtext {
+      font-size: 2rem;
+    }
+  
+    .textBlock {
+      max-width: 70%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .heroSection {
+      height: 70vh;
+    }
+  
+    .textBlock {
+      max-width: 85%;
+      left: 50%;
+      right: auto;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      padding: 1.5rem;
+    }
+  
+    .heroHeading {
+      font-size: 3rem;
+    }
+  
+    .heroSubtext {
+      font-size: 1.6rem;
+    }
+  
+    .heroImage {
+      height: auto;
+      width: 100%;
+      max-height: 60vh;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .heroSection {
+      height: 60vh;
+    }
+  
+    .textBlock {
+      max-width: 90%;
+      padding: 1.2rem;
+    }
+  
+    .heroHeading {
+      font-size: 2.2rem;
+    }
+  
+    .heroSubtext {
+      font-size: 1.3rem;
+    }
+  
+    .heroImage {
+      max-height: 50vh;
+    }
+  }
+  

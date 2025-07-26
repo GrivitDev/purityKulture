@@ -1,0 +1,42 @@
+.page {
+    padding: 2rem;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .form {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    max-width: 500px;
+  }
+  
+  .card {
+    background: #fff;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
+  }
+  
+  .card video {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card button {
+    margin-top: 0.5rem;
+  }
+  
+  .card .delete {
+    background-color: crimson;
+    color: white;
+  }
+  

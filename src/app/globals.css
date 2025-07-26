@@ -1,22 +1,41 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* --- Neutrals --- */
+  --white: #ffffff;
+  --off-white: #fdf5f1;
+  --cream: #f8f5f0;
+  --light-ivory: #f8e6e0;
+
+  /* --- Primary Colors --- */
+  --lavender: #b9a7c3;
+  --dusty-blue: #a5c9d1;
+  --dusty-pink: #eed5dc;
+
+  /* --- Deep Accents --- */
+  --deep-brown: #6b4c3b;
+  --mauve: #9d7ba6;
+  --rosewood: #a4696a;
+
+    --navbar-bg: #e8d7cc; /* light artistic brown */
+    --text: #5a3e36;       /* sidebar text color */
+
+  /* --- Utility Tokens --- */
+  --primary-color: var(--lavender);
+  --secondary-color: var(--dusty-blue);
+  --accent-color: var(--dusty-pink);
+  --text-color: var(--deep-brown);
+  --bg-color: var(--off-white);
+  --border-color: var(--cream);
+
+  /* --- Core Background/Foreground --- */
+  --background: var(--bg-color);
+  --foreground: var(--text-color);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Remove dark mode override */
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-}
-
-body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
@@ -35,8 +54,30 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+}
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+.mobile-menu-button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background-color: var(--lavender);
+  color: var(--white);
+  border: none;
+  font-size: 1.5rem;
+  z-index: 1100;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-button {
+    display: block;
   }
 }
+

@@ -1,0 +1,178 @@
+/* ====== Gallery Grid Layout ====== */
+.galleryGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+    padding: 2rem 0;
+  }
+  
+  /* ====== Card Container ====== */
+  .card {
+    position: relative;
+    background-color: var(--cream);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+    padding: 0;
+    aspect-ratio: 1 / 1; /* Keeps all cards square unless overridden by tile-* */
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+  }
+  
+  /* ====== Media Wrapper ====== */
+  .mediaWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .mediaWrapper img,
+  .mediaWrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* ====== Grid Size Modifiers ====== */
+  .tile-large {
+    grid-column: span 2;
+    grid-row: span 2;
+    aspect-ratio: 2 / 2;
+  }
+  
+  .tile-wide {
+    grid-column: span 2;
+    grid-row: span 1;
+    aspect-ratio: 2 / 1;
+  }
+  
+  .tile-tall {
+    grid-column: span 1;
+    grid-row: span 2;
+    aspect-ratio: 1 / 2;
+  }
+  
+  .tile-small {
+    grid-column: span 1;
+    grid-row: span 1;
+    aspect-ratio: 1 / 1;
+  }
+  
+  /* ====== Reactions (Modal Only) ====== */
+  .reactions {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.6rem 1rem;
+    background-color: var(--off-white);
+    font-size: 1.2rem;
+    border-top: 1px solid var(--border-color);
+  }
+  
+  .reactions button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.3rem;
+    transition: transform 0.2s;
+  }
+  
+  .reactions button:hover {
+    transform: scale(1.2);
+  }
+  
+  /* ====== Modal View ====== */
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.85);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modalContent {
+    background: var(--white);
+    max-width: 90%;
+    max-height: 90%;
+    padding: 1rem;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modalImage,
+  .modalVideo {
+    width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+    border-radius: 10px;
+  }
+  
+  /* ====== Responsive Adjustments ====== */
+  @media (max-width: 768px) {
+    .galleryGrid {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+  
+    .tile-large {
+      aspect-ratio: 2 / 2;
+    }
+  
+    .tile-wide {
+      aspect-ratio: 2 / 1;
+    }
+  
+    .tile-tall {
+      aspect-ratio: 1 / 2;
+    }
+  
+    .tile-small {
+      aspect-ratio: 1 / 1;
+    }
+  
+    .reactions {
+      font-size: 1.1rem;
+    }
+  }
+  
+  .reactions {
+    display: flex;
+    gap: 0.1rem;
+    margin-top: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .reactions button {
+    font-size: 1.4rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.1rem 0.3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-color);
+  }
+  
+  .reactions button:hover {
+    background: var(--accent-color);
+    color: white;
+  }
+  
+  .activeEmoji {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    font-weight: bold;
+  }
+  

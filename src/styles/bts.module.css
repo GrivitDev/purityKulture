@@ -1,0 +1,130 @@
+/* BTS.module.css */
+
+.btsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  padding: 3rem 1rem;
+  background-color: var(--background);
+  justify-content: center;
+}
+
+  
+  /* Keep all cards same height */
+  .btsCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    min-height: 340px;
+    background: var(--off-white);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(170, 140, 160, 0.15);
+    padding: 0.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* VIDEO */
+  .btsVideo {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    border: 2px solid var(--dusty-pink);
+  }
+  
+  /* TEXT */
+  .btsCard h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--deep-brown);
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  
+  .description {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    text-align: center;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+    margin-bottom: 0.5rem;
+  }
+  
+  .expanded {
+    -webkit-line-clamp: unset;
+    max-height: none;
+  }
+  
+  /* READ MORE BUTTON */
+  .readMoreBtn {
+    background: none;
+    border: none;
+    color: var(--mauve);
+    font-size: 1.3rem;
+    font-family: 'Fraunces', serif;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    text-decoration: underline;
+  }
+  
+  /* REACTIONS SECTION (stuck to bottom) */
+  .reactionContainer {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: 1rem;
+  }
+  
+  .reactionButton {
+    background-color: var(--cream);
+    border: 1px solid var(--dusty-pink);
+    border-radius: 25px;
+    padding: 0.3rem 0.3rem;
+    font-size: 1rem;
+    font-family: 'Fraunces', serif;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .reactionButton:hover {
+    background-color: var(--dusty-pink);
+    color: var(--white);
+    transform: scale(1.05);
+  }
+  
+  /* RESPONSIVENESS */
+  @media (max-width: 480px) {
+    .btsCard {
+      min-height: 280px;
+    }
+  
+    .btsVideo {
+      max-height: 180px;
+    }
+  
+    .btsCard h3 {
+      font-size: 1.6rem;
+    }
+  
+    .description {
+      font-size: 1.2rem;
+    }
+  
+    .reactionButton {
+      font-size: 1.1rem;
+    }
+  }
+  
