@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import useInView from '@/hooks/useInView';
 import styles from '@/styles/hero.module.css';
+import Image from 'next/image';
+import { JSX } from 'react';
 
 const slides = [
   {
@@ -40,7 +42,7 @@ const slides = [
   },
 ];
 
-export default function SectionHero() {
+export default function SectionHero(): JSX.Element {
   const [ref, visible] = useInView({ threshold: 0.4 });
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -62,7 +64,7 @@ export default function SectionHero() {
         return (
           <div key={index} className={`${styles.slide} ${isActive ? styles.active : ''}`}>
             <div className={styles.imageBlock}>
-              <img
+              <Image
                 src={slide.image}
                 alt={slide.heading}
                 className={`${styles.heroImage} ${isActive ? styles.imageFloat : ''}`}

@@ -1,11 +1,16 @@
 'use client';
 
+import { JSX } from 'react';
 import { usePathname } from 'next/navigation';
 import Navbar from './Navbar';
 
-export default function ClientWrapper({ children }: { children: React.ReactNode }) {
+type ClientWrapperProps = {
+  children: React.ReactNode;
+};
+
+export default function ClientWrapper({ children }: ClientWrapperProps): JSX.Element {
   const pathname = usePathname();
-  const isAdminPage = pathname.startsWith('/admin');
+  const isAdminPage = pathname?.startsWith('/admin') ?? false;
 
   return (
     <>

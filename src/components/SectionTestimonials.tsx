@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import useInView from '@/hooks/useInView';
 import api from '@/lib/axios';
 import styles from '@/styles/testimSection.module.css';
-
+import { JSX } from 'react';
 interface Review {
   _id: string;
   title: string;
@@ -19,7 +19,7 @@ function truncateWords(text: string, wordLimit: number): string {
     : text;
 }
 
-export default function SectionTestimonials() {
+export default function SectionTestimonials(): JSX.Element {
   const [ref, visible] = useInView({ threshold: 0.3 });
   const [testimonials, setTestimonials] = useState<Review[]>([]);
 
@@ -55,9 +55,11 @@ export default function SectionTestimonials() {
           <blockquote key={t._id} className={styles.testimonialCard}>
             <h3 className={styles.testimonialTitle}>{t.title}</h3>
             <p className={styles.testimonialText}>
-              "{truncateWords(t.description, 50)}"
+              <span>&quot;{truncateWords(t.description, 50)}&quot;</span>
             </p>
-            <footer className={styles.testimonialFooter}>— {t.name || 'Anonymous'}</footer>
+            <footer className={styles.testimonialFooter}>
+              — {t.name || 'Anonymous'}
+            </footer>
           </blockquote>
         ))}
       </div>

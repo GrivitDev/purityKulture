@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, JSX } from 'react';
 import styles from '@/styles/collectionsBlock.module.css';
 import OrderButton from './OrderButton';
 import api from '@/lib/axios';
+import Image from 'next/image';
 
 type Style = {
   _id: string;
@@ -32,56 +33,55 @@ const EMOJI_MAP: Record<'😍' | '🔥' | '💎' | '👎🏽', keyof Style> = {
   '👎🏽': 'dislike',
 };
 
-export default function CollectionCategoryBlock({ category }: { category: Category }) {
-  const [expanded, setExpanded] = useState(false);
+export default function CollectionCategoryBlock({ category }: { category: Category }): JSX.Element {
+  const [expanded, setExpanded] = useState<boolean>(false);
   const [expandedDescriptions, setExpandedDescriptions] = useState<Record<string, boolean>>({});
   const [lightboxUrl, setLightboxUrl] = useState<string | null>(null);
   const [localReactions, setLocalReactions] = useState<Record<string, Partial<Record<keyof Style, number>>>>({});
   const [reactionDisplay, setReactionDisplay] = useState<Record<string, (keyof typeof EMOJI_MAP)[]>>({});
 
-  
-  const [displayText, setDisplayText] = useState('');
-const indexRef = useRef(0);
-const isDeleting = useRef(false);
-const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [displayText, setDisplayText] = useState<string>('');
+  const indexRef = useRef<number>(0);
+  const isDeleting = useRef<boolean>(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-useEffect(() => {
-  const fullText = category.name;
-  const typingSpeed = 120;
-  const pauseDuration = 4000;
-
-  const type = () => {
-    const current = fullText.slice(0, indexRef.current);
-    setDisplayText(current + '|');
-
-    if (!isDeleting.current && indexRef.current < fullText.length) {
-      indexRef.current++;
-      timeoutRef.current = setTimeout(type, typingSpeed);
-    } else if (!isDeleting.current && indexRef.current === fullText.length) {
-      timeoutRef.current = setTimeout(() => {
-        isDeleting.current = true;
-        type();
-      }, pauseDuration);
-    } else if (isDeleting.current && indexRef.current > 0) {
-      indexRef.current--;
-      timeoutRef.current = setTimeout(type, typingSpeed);
-    } else {
-      isDeleting.current = false;
-      timeoutRef.current = setTimeout(type, 1000);
-    }
-  };
-
-  type();
-
-  return () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-  };
-}, [category.name]);
-
-  // Emoji reaction loop
+  // Typing effect
   useEffect(() => {
+    const fullText = category.name;
+    const typingSpeed = 120;
+    const pauseDuration = 4000;
+
+    const type = () => {
+      const current = fullText.slice(0, indexRef.current);
+      setDisplayText(current + '|');
+
+      if (!isDeleting.current && indexRef.current < fullText.length) {
+        indexRef.current++;
+        timeoutRef.current = setTimeout(type, typingSpeed);
+      } else if (!isDeleting.current && indexRef.current === fullText.length) {
+        timeoutRef.current = setTimeout(() => {
+          isDeleting.current = true;
+          type();
+        }, pauseDuration);
+      } else if (isDeleting.current && indexRef.current > 0) {
+        indexRef.current--;
+        timeoutRef.current = setTimeout(type, typingSpeed);
+      } else {
+        isDeleting.current = false;
+        timeoutRef.current = setTimeout(type, 1000);
+      }
+    };
+
+    type();
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [category.name]);
+
+  // Emoji animation
+  useEffect(() => {
+    const emojiKeys = Object.keys(EMOJI_MAP) as (keyof typeof EMOJI_MAP)[];
     category.styles.forEach((style) => {
-      const emojiKeys = Object.keys(EMOJI_MAP) as (keyof typeof EMOJI_MAP)[];
       let index = 0;
 
       const loop = () => {
@@ -104,7 +104,7 @@ useEffect(() => {
     const reactionField = EMOJI_MAP[emoji];
     const key = `emoji-${styleId}-${emoji}`;
 
-    if (localStorage.getItem(key)) {
+    if (typeof window !== 'undefined' && localStorage.getItem(key)) {
       return alert('You’ve already reacted!');
     }
 
@@ -114,8 +114,8 @@ useEffect(() => {
       });
 
       const current = localReactions[styleId] || {};
-      const base = category.styles.find(s => s._id === styleId);
-      const baseCount = base?.[reactionField] || 0;
+      const base = category.styles.find((s) => s._id === styleId);
+      const baseCount = base?.[reactionField] ?? 0;
 
       setLocalReactions((prev) => ({
         ...prev,
@@ -133,23 +133,24 @@ useEffect(() => {
     }
   };
 
-  const visibleStyles = !expanded && category.styles.length > 4
-  ? category.styles.slice(0, 4)
-  : category.styles;
-
-
+  const visibleStyles =
+    !expanded && category.styles.length > 4
+      ? category.styles.slice(0, 4)
+      : category.styles;
 
   return (
     <section className={styles.categorySection}>
       <div
         className={styles.categoryBanner}
         style={{ backgroundImage: `url(${category.imageUrl})` }}
+        role="banner"
+        aria-label={`Styles for ${category.name}`}
       >
         <h2 className={styles.categoryTitle}>{displayText}</h2>
       </div>
 
       <div className={styles.stylesGrid}>
-      {visibleStyles.map((style) => {
+        {visibleStyles.map((style) => {
           const overrides = localReactions[style._id] || {};
           const displayedEmojis = reactionDisplay[style._id] || [];
 
@@ -157,15 +158,18 @@ useEffect(() => {
             ((style.priceMax - style.priceMin) / style.priceMax) * 100
           );
 
-
           return (
             <div key={style._id} className={styles.styleCard}>
-              <img
+              <Image
                 src={style.imageUrl}
                 alt={style.title}
+                width={400}
+                height={400}
                 className={styles.styleImage}
                 onClick={() => setLightboxUrl(style.imageUrl)}
+                role="button"
               />
+
               <div className={styles.cardContent}>
                 <h4 className={styles.styleTitle}>{style.title}</h4>
 
@@ -179,6 +183,7 @@ useEffect(() => {
                   </p>
                   {style.description.length > 120 && (
                     <button
+                      type="button"
                       className={styles.readMoreButton}
                       onClick={() =>
                         setExpandedDescriptions((prev) => ({
@@ -193,20 +198,18 @@ useEffect(() => {
                 </div>
 
                 <div className={styles.priceWrapper}>
-                    <div className={styles.oldPriceBlock}>
-                      <span className={styles.oldPrice}>
-                        ₦{style.priceMax.toLocaleString()}
-                      </span>
-                      {discountPercent >= 1 && (
-                        <span className={styles.discount}>{discountPercent}% off</span>
-                      )}
-                    </div>
-                    <span className={styles.currentPrice}>
-                      ₦{style.priceMin.toLocaleString()}
+                  <div className={styles.oldPriceBlock}>
+                    <span className={styles.oldPrice}>
+                      ₦{style.priceMax.toLocaleString()}
                     </span>
+                    {discountPercent >= 1 && (
+                      <span className={styles.discount}>{discountPercent}% off</span>
+                    )}
                   </div>
-
-
+                  <span className={styles.currentPrice}>
+                    ₦{style.priceMin.toLocaleString()}
+                  </span>
+                </div>
 
                 <div className={styles.reactionRow}>
                   {displayedEmojis.map((emoji) => {
@@ -214,8 +217,10 @@ useEffect(() => {
                     return (
                       <button
                         key={emoji}
+                        type="button"
                         className={styles.reactionButton}
                         onClick={() => handleReact(style._id, emoji)}
+                        aria-label={`React with ${emoji}`}
                       >
                         {emoji} {overrides[field] ?? style[field] ?? 0}
                       </button>
@@ -239,16 +244,32 @@ useEffect(() => {
 
       {category.styles.length > 4 && (
         <div className={styles.showMoreWrapper}>
-          <button onClick={() => setExpanded(!expanded)} className={styles.showMoreButton}>
+          <button
+            type="button"
+            onClick={() => setExpanded(!expanded)}
+            className={styles.showMoreButton}
+            aria-expanded={expanded}
+          >
             {expanded ? 'Show Less' : 'See More Styles'}
           </button>
         </div>
       )}
 
       {lightboxUrl && (
-        <div className={styles.lightboxOverlay} onClick={() => setLightboxUrl(null)}>
+        <div
+          className={styles.lightboxOverlay}
+          onClick={() => setLightboxUrl(null)}
+          role="dialog"
+          aria-modal="true"
+        >
           <div className={styles.lightboxContent}>
-            <img src={lightboxUrl} alt="Expanded preview" className={styles.lightboxImage} />
+            <Image
+              src={lightboxUrl}
+              alt="Expanded preview"
+              width={800}
+              height={800}
+              className={styles.lightboxImage}
+            />
           </div>
         </div>
       )}

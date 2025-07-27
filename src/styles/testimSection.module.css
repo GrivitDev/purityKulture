@@ -1,11 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
 
-:root {
-  --bg-light: #f8f5f0;
-  --text-dark: #6b4c3b;
-  --accent-pink: #eed5dc;
-  --shadow-light: rgba(0, 0, 0, 0.05);
-}
 
 .testimonialSection {
   padding: 5rem 2rem;

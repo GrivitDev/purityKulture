@@ -1,17 +1,25 @@
 import { useEffect, useRef, useState } from 'react';
 
-export default function useInView(options = {}) {
-  const ref = useRef(null);
+export default function useInView(options: IntersectionObserverInit = {}) {
+  const ref = useRef<HTMLElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      setIsVisible(entry.isIntersecting);
-    }, options);
+    const currentRef = ref.current;
+    if (!currentRef) return;
 
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [options]);
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      options
+    );
+
+    observer.observe(currentRef);
+
+    return () => {
+      if (currentRef) observer.unobserve(currentRef);
+      observer.disconnect();
+    };
+  }, [options]); // ✅ Now correctly watches all changes
 
   return [ref, isVisible] as const;
 }

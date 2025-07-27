@@ -3,6 +3,9 @@
 import { useState, useEffect, FormEvent } from 'react';
 import styles from '@/styles/adminCollections.module.css';
 import api from '@/lib/axios';
+import Image from 'next/image';
+import type { JSX } from 'react';
+
 
 interface Category {
   _id: string;
@@ -10,7 +13,7 @@ interface Category {
   imageUrl?: string;
 }
 
-export default function Categories() {
+export default function Categories(): JSX.Element {
   const [categories, setCategories] = useState<Category[]>([]);
   const [name, setName] = useState('');
   const [image, setImage] = useState<File | null>(null);
@@ -65,7 +68,7 @@ export default function Categories() {
           <div key={cat._id} className={styles.card}>
             <strong>{cat.name}</strong>
             {cat.imageUrl && (
-              <img src={cat.imageUrl} alt={cat.name} className={styles.thumb} />
+              <Image src={cat.imageUrl} alt={cat.name} className={styles.thumb} />
             )}
             <button onClick={() => handleDelete(cat._id)}>Delete</button>
           </div>

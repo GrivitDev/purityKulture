@@ -1,4 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap');
+
+
 :root {
+  --bg-light: #fdf5f1;
+  --text-dark: #6b4c3b;
+  --accent-pink: #eed5dc;
+  --shadow-light: rgba(0, 0, 0, 0.05);
+
+  --light-blue: #ecf7fa;
+  --text-dark-blue: #395d6f;
+
+  --navbar-bg: #e8d7cc; /* light artistic brown */
+  --hover-bg: #b75656;  /* rich rose red */
+  --hover-text: #ffffff;
+  --text: #5a3e36;
+  --text-color: #6b4c3b;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+
   /* --- Neutrals --- */
   --white: #ffffff;
   --off-white: #fdf5f1;
@@ -15,21 +35,33 @@
   --mauve: #9d7ba6;
   --rosewood: #a4696a;
 
-    --navbar-bg: #e8d7cc; /* light artistic brown */
-    --text: #5a3e36;       /* sidebar text color */
+  /* --- Layout/Component Specific --- */
+  --gallery-bg: #fdf5f1;
+  --highlight-color: #a5c9d1;
+  --footer-bg: #3a2d28;
+  --text-light: #f9f7f5;
+  --accent-light: #dabaa0;
+  --bg-fair: #fbf7f3;
+  --bg: #fbf7f3;
+  --whatsapp: #25D366;
+  --card-bg: #fff;
+  --card-shadow: rgba(0, 0, 0, 0.08);
+  --scrollbar: #d8c6bc;
 
   /* --- Utility Tokens --- */
-  --primary-color: var(--lavender);
+  --accent: var(--dusty-pink);
+  --primary: var(--lavender);
   --secondary-color: var(--dusty-blue);
   --accent-color: var(--dusty-pink);
-  --text-color: var(--deep-brown);
   --bg-color: var(--off-white);
   --border-color: var(--cream);
+  --highlight: var(--dusty-blue);
 
-  /* --- Core Background/Foreground --- */
+  /* --- Core Foreground/Background --- */
   --background: var(--bg-color);
   --foreground: var(--text-color);
 }
+
 
 /* Remove dark mode override */
 html,
@@ -41,6 +73,16 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 * {
@@ -81,3 +123,16 @@ h1, h2, h3 {
   }
 }
 
+/* Hide scrollbars for aesthetic on desktop */
+body::-webkit-scrollbar {
+  width: 6px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--dusty-blue);
+  border-radius: 4px;
+}

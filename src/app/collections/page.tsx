@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import CollectionCategoryBlock from '@/components/CollectionCategoryBlock';
 import styles from '@/styles/Collections.module.css';
 import api from '@/lib/axios';
+import Image from 'next/image';
+import { JSX } from 'react';
 
 type Style = {
   _id: string;
@@ -24,7 +26,7 @@ type Category = {
   styles: Style[];
 };
 
-export default function CollectionsPage() {
+export default function CollectionsPage(): JSX.Element  {
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -53,10 +55,16 @@ export default function CollectionsPage() {
         });
 
         setCategories(grouped);
-      } catch (err: any) {
-        console.error('Failed to fetch collections:', err);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          console.error('Failed to fetch collections:', err.message);
+        } else {
+          console.error('Unknown error while fetching collections:', err);
+        }
+      
         setError('We encountered an error loading the collections. Please try again later.');
-      } finally {
+      }
+       finally {
         setLoading(false);
       }
     };
@@ -71,7 +79,7 @@ export default function CollectionsPage() {
   return (
     <div className={styles.collectionsPage}>
       <div className={styles.brandHeader}>
-        <img src="/logo.png" alt="Purity Kulture Logo" className={styles.brandLogo} />
+        <Image src="/logo.png" alt="Purity Kulture Logo" className={styles.brandLogo} />
         <h2 className={styles.brandName}>Purity Kulture</h2>
       </div>
 

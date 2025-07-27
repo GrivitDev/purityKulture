@@ -1,10 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap');
 
-:root {
-  --footer-bg: #3a2d28; /* Deep rich brown */
-  --text-light: #f9f7f5;
-  --accent-light: #dabaa0;
-}
 
 .footer {
   background-color: var(--footer-bg);

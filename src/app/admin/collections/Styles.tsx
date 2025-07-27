@@ -3,6 +3,9 @@
 import { useEffect, useState, FormEvent } from 'react';
 import api from '@/lib/axios';
 import styles from '@/styles/adminCollections.module.css';
+import Image from 'next/image';
+import type { JSX } from 'react';
+
 
 interface Category {
   _id: string;
@@ -19,7 +22,7 @@ interface Style {
   category: Category;
 }
 
-export default function StylesManager() {
+export default function StylesManager(): JSX.Element {
   const [categories, setCategories] = useState<Category[]>([]);
   const [stylesList, setStylesList] = useState<Style[]>([]);
   const [form, setForm] = useState({
@@ -124,7 +127,7 @@ export default function StylesManager() {
               ₦{style.priceMin} - ₦{style.priceMax}
             </p>
             {style.imageUrl && (
-              <img src={style.imageUrl} alt={style.title} className={styles.thumb} />
+              <Image src={style.imageUrl} alt={style.title} className={styles.thumb} />
             )}
             <p><em>{style.category?.name}</em></p>
             <button onClick={() => handleDelete(style._id)}>Delete</button>

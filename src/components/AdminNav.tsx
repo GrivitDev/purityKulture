@@ -1,18 +1,17 @@
 'use client';
 
+import { JSX, useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import AdminLogout from './AdminLogout';
 import styles from '@/styles/AdminNav.module.css';
-import Image from 'next/image';
 
-export default function AdminNav() {
+export default function AdminNav(): JSX.Element {
   const [open, setOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
 
-  // Close nav on outside click (mobile only)
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event: MouseEvent): void => {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
         setOpen(false);
       }
@@ -29,8 +28,8 @@ export default function AdminNav() {
 
   return (
     <>
-      {/* Mobile toggle button */}
       <button
+        type="button"
         className={styles.mobileMenuButton}
         onClick={() => setOpen(!open)}
         aria-label="Toggle Menu"
@@ -38,10 +37,10 @@ export default function AdminNav() {
         ☰
       </button>
 
-      {/* Sidebar Navigation */}
       <nav
         ref={navRef}
         className={`${styles.navbar} ${open ? styles.open : ''}`}
+        aria-label="Admin Navigation"
       >
         <div className={styles.logoContainer}>
           <Image
@@ -50,31 +49,46 @@ export default function AdminNav() {
             width={120}
             height={120}
             className={styles.logo}
+            priority
           />
           <h2>PURITY KULTURE</h2>
         </div>
+
         <ul>
           <li>
-            <Link href="/admin" onClick={() => setOpen(false)}>🏠 Home</Link>
+            <Link href="/admin" onClick={() => setOpen(false)}>
+              <span role="img" aria-label="Home">🏠</span> Home
+            </Link>
           </li>
           <li>
-            <Link href="/admin/clients" onClick={() => setOpen(false)}>📝 Reviews Manager</Link>
+            <Link href="/admin/clients" onClick={() => setOpen(false)}>
+              <span role="img" aria-label="Reviews">📝</span> Reviews Manager
+            </Link>
           </li>
           <li>
-            <Link href="/admin/collections" onClick={() => setOpen(false)}>👗 Collections Manager</Link>
+            <Link href="/admin/collections" onClick={() => setOpen(false)}>
+              <span role="img" aria-label="Collections">👗</span> Collections Manager
+            </Link>
           </li>
           <li>
-            <Link href="/admin/bts" onClick={() => setOpen(false)}>🎬 BTS Manager</Link>
+            <Link href="/admin/bts" onClick={() => setOpen(false)}>
+              <span role="img" aria-label="Behind the Scenes">🎬</span> BTS Manager
+            </Link>
           </li>
           <li>
-            <Link href="/admin/orders" onClick={() => setOpen(false)}>📦 Orders Manager</Link>
+            <Link href="/admin/orders" onClick={() => setOpen(false)}>
+              <span role="img" aria-label="Orders">📦</span> Orders Manager
+            </Link>
           </li>
           <li>
-            <Link href="/admin/gallery" onClick={() => setOpen(false)}>📸 Gallery Manager</Link>
+            <Link href="/admin/gallery" onClick={() => setOpen(false)}>
+              <span role="img" aria-label="Gallery">📸</span> Gallery Manager
+            </Link>
           </li>
-          <li><AdminLogout /></li>
+          <li>
+            <AdminLogout />
+          </li>
         </ul>
-
       </nav>
     </>
   );

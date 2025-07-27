@@ -7,9 +7,10 @@ import {
   Bodoni_Moda,
   Cormorant_Garamond,
 } from 'next/font/google';
+import { JSX } from 'react';
 
 import Footer from '@/components/Footer';
-import ClientWrapper from '@/components/ClientWrapper'; // ✅ Import properly
+import ClientWrapper from '@/components/ClientWrapper';
 
 const geistSans = Geist({
   subsets: ['latin'],
@@ -52,15 +53,24 @@ export const metadata = {
   description: 'Elegant fashion for the modern woman.',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${fraunces.variable} ${bodoni.variable} ${cormorant.variable}`}
+        className={[
+          geistSans.variable,
+          geistMono.variable,
+          playfair.variable,
+          fraunces.variable,
+          bodoni.variable,
+          cormorant.variable,
+        ].join(' ')}
       >
-        <ClientWrapper>
-          {children}
-        </ClientWrapper>
+        <ClientWrapper>{children}</ClientWrapper>
         <Footer />
       </body>
     </html>

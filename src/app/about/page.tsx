@@ -1,11 +1,11 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import type { JSX } from 'react';
 import Image from 'next/image';
 import WhatSetsUsApart from '@/components/WhatSetsUsApart';
 import styles from '@/styles/About.module.css';
 
-export default function AboutPage() {
+export default function AboutPage(): JSX.Element {
   return (
     <main className={styles.container}>
       {/* 1. Hero Banner */}
@@ -13,8 +13,9 @@ export default function AboutPage() {
         <div className={styles.aboutHeroOverlay}>
           <h1>Crafted for Queens. Designed from the Soul.</h1>
           <p>
-            Purity Kulture is more than fashion—it's identity, dignity, and divine design.
+            Purity Kulture is more than fashion, it&apos;s identity, dignity, and divine design.
           </p>
+
         </div>
       </section>
 
@@ -35,30 +36,28 @@ export default function AboutPage() {
         <div className={styles.storyImage}>
           <Image
             src="/images/about.jpg"
-            alt="Purity Kulture Story"
+            alt="Designer working on a garment for Purity Kulture"
             width={600}
             height={400}
             className={styles.curvedImage}
+            priority
           />
         </div>
       </section>
 
-
-
-
-      {/* 4. Meet the Designer */}
+      {/* 3. Meet the Designer */}
       <section className={styles.team}>
         <div className={styles.teamImage}>
           <Image
             src="/images/team1.jpg"
-            alt="Grivit — Designer"
+            alt="Gift Onofu — Lead Designer at Purity Kulture"
             width={300}
             height={300}
             className={styles.portraitImage}
           />
         </div>
         <div className={styles.teamBio}>
-          <h2>Meet Genius </h2>
+          <h2>Meet Genius</h2>
           <p>
             Gift Onofu is the creative heart behind Purity Kulture. With deep faith and devotion
             to elegance, she fashions garments that empower and inspire.
@@ -68,11 +67,17 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
-      
+
+      {/* 4. Mission, Vision & Values */}
       <section className={styles.mvValues}>
         <div className={styles.card}>
           <div className={styles.iconWrap}>
-            <Image src="/images/mission-icon.jpg" alt="Mission Icon" width={280} height={280} />
+            <Image
+              src="/images/mission-icon.jpg"
+              alt="Mission icon representing purpose"
+              width={280}
+              height={280}
+            />
           </div>
           <h3>Mission</h3>
           <p>To clothe women in purpose, dignity, and divine confidence.</p>
@@ -80,15 +85,25 @@ export default function AboutPage() {
 
         <div className={styles.card}>
           <div className={styles.iconWrap}>
-            <Image src="/images/vision-icon.jpg" alt="Vision Icon" width={280} height={280} />
+            <Image
+              src="/images/vision-icon.jpg"
+              alt="Vision icon representing future goals"
+              width={280}
+              height={280}
+            />
           </div>
           <h3>Vision</h3>
-          <p>To be Africa’s leading Christ‑centered fashion brand globally.</p>
+          <p>To be Africa&apos;s leading Christ‑centered fashion brand globally.</p>
         </div>
 
         <div className={styles.card}>
           <div className={styles.iconWrap}>
-            <Image src="/images/values-icon.jpg" alt="Values Icon" width={280} height={280} />
+            <Image
+              src="/images/values-icon.jpg"
+              alt="Values icon representing brand principles"
+              width={280}
+              height={280}
+            />
           </div>
           <h3>Core Values</h3>
           <ul>
@@ -107,14 +122,15 @@ export default function AboutPage() {
         <div className={styles.textBlock}>
           <h2>Faith & Fashion</h2>
           <p>
-            We believe fashion can glorify God, empower women, and preserve cultural beauty.<br />
-            <em>“She is clothed in strength and dignity and laughs without fear of the future.”</em> – Proverbs 31:25
+            We believe fashion can glorify God, empower women, and preserve cultural beauty.
+            <br />
+            <em>&quot;She is clothed in strength and dignity and laughs without fear of the future.&quot;</em> – Proverbs 31:25
           </p>
         </div>
         <div className={styles.imageBlock}>
           <Image
             src="/images/faith.jpg"
-            alt="Faith and Fashion"
+            alt="Fashion that expresses faith and cultural beauty"
             width={500}
             height={400}
             className={styles.bannerImage}
@@ -122,15 +138,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 7. What Sets Us Apart (Progress Bars) */}
+      {/* 6. What Sets Us Apart (Progress Bars) */}
       <WhatSetsUsApart />
 
-      {/* 6. Sustainability & Craftsmanship */}
+      {/* 7. Sustainability & Craftsmanship */}
       <section className={styles.sectionWithImageAlt}>
         <div className={styles.imageBlock}>
           <Image
             src="/images/sustain.jpg"
-            alt="Craftsmanship"
+            alt="Artisan handcrafting a garment"
             width={500}
             height={400}
             className={styles.bannerImage}
@@ -144,9 +160,6 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
-
-
     </main>
   );
 }
-

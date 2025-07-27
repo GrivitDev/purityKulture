@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import api from '@/lib/axios'
 import styles from '@/styles/GalleryAdmin.module.css';
+import Image from 'next/image';
+import type { JSX } from 'react';
 
 type Media = {
   _id: string;
@@ -12,7 +14,7 @@ type Media = {
   reactions: Record<string, number>;
 };
 
-export default function GalleryAdminPage() {
+export default function GalleryAdminPage(): JSX.Element {
   const [files, setFiles] = useState<File[]>([]);
   const [mediaList, setMediaList] = useState<Media[]>([]);
   const [message, setMessage] = useState('');
@@ -22,7 +24,7 @@ export default function GalleryAdminPage() {
   }, []);
 
   const fetchMedia = async () => {
-    const res = await api.get('/gallery');
+    const res = await api.get<Media[]>('/gallery');
     setMediaList(res.data);
   };
   
@@ -103,7 +105,7 @@ export default function GalleryAdminPage() {
         {mediaList.map(m => (
           <div key={m._id} className={styles.card}>
             {m.type === 'image' ? (
-              <img src={m.mediaUrl} alt="Gallery" />
+              <Image src={m.mediaUrl} alt="Gallery" />
             ) : (
               <video src={m.mediaUrl} controls />
             )}

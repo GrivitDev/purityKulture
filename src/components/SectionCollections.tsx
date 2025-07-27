@@ -2,6 +2,7 @@
 
 import useInView from '@/hooks/useInView';
 import styles from '@/styles/collectionssection.module.css';
+import Image from 'next/image';
 
 const collections = [
   {
@@ -56,17 +57,31 @@ export default function SectionCollections() {
         Explore diverse styles from our curated categories — Bridal, Ankara, Casual, Lace & More.
       </p>
 
-      <div className={styles.collectionScroll}>
+      <div className={styles.collectionGrid}>
         {collections.map((item, index) => (
           <div key={index} className={styles.collectionCard}>
-            <img src={item.image} alt={item.title} className={styles.collectionImage} />
-            <h3 className={styles.collectionTitle}>{item.title}</h3>
-            <p className={styles.collectionDescription}>{item.description}</p>
+            <div className={styles.imageWrapper}>
+              <Image
+                src={item.image}
+                alt={item.title}
+                layout="fill"
+                objectFit="cover"
+                className={styles.collectionImage}
+                sizes="(max-width: 768px) 100vw, 33vw"
+                priority={index < 3}
+              />
+            </div>
+            <div className={styles.textWrapper}>
+              <h3 className={styles.collectionTitle}>{item.title}</h3>
+              <p className={styles.collectionDescription}>{item.description}</p>
+            </div>
           </div>
         ))}
       </div>
 
-      <a href="/collections" className={styles.viewAllBtn}>Explore More Styles</a>
+      <a href="/collections" className={styles.viewAllBtn}>
+        Explore More Styles
+      </a>
     </section>
   );
 }

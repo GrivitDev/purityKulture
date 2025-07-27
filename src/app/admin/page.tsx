@@ -1,18 +1,20 @@
 'use client';
 
 import { useEffect } from 'react';
+import { JSX } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import AdminLogout from '@/components/AdminLogout';
 import styles from '@/styles/adminDashboardPage.module.css';
 
-export default function DashboardPage() {
+export default function DashboardPage(): JSX.Element {
   const router = useRouter();
 
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem('pk_admin_key');
-    if (!isLoggedIn) {
-      router.push('/admin/login');
+    if (typeof window !== 'undefined') {
+      const isLoggedIn = localStorage.getItem('pk_admin_key');
+      if (!isLoggedIn) {
+        router.push('/admin/login');
+      }
     }
   }, [router]);
 
@@ -63,7 +65,6 @@ export default function DashboardPage() {
             <p>Upload and showcase visual content.</p>
           </div>
         </Link>
-
       </div>
     </section>
   );

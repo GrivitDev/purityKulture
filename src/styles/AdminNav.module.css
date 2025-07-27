@@ -1,13 +1,3 @@
-:root {
-    --navbar-bg: #f2e1d9;      /* light peach-pink */
-    --text-color: #321b12;     /* bold deep cocoa */
-    --hover-bg: #b75656;       /* rich rose red */
-    --hover-text: #ffffff;     /* pure white */
-    --rosewood: #a43c3c;       /* vivid wine red for buttons */
-  }
-  
-  
-
 /* === Default Desktop Styles === */
 .navbar {
     background-color: var(--navbar-bg);

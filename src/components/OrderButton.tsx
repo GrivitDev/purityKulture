@@ -12,7 +12,6 @@ interface StyleData {
   source: 'collection' | 'gallery' | 'client-wall';
 }
 
-// Inline portal component — no new file
 function ModalPortal({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
@@ -34,9 +33,15 @@ export default function OrderButton({ style }: { style: StyleData }) {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setMessage('');
     try {
       await api.post('/orders', {
         fullName: form.fullName,
@@ -47,10 +52,10 @@ export default function OrderButton({ style }: { style: StyleData }) {
         mediaType: style.mediaType,
         source: style.source,
       });
-      setMessage('Order sent! We’ll message you shortly.');
+      setMessage('✅ Order sent! We’ll message shortly via WhatsApp.');
       setForm({ fullName: '', address: '', phoneNumber: '' });
     } catch {
-      setMessage('Failed to send order.');
+      setMessage('❌ Failed to send order. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -64,38 +69,52 @@ export default function OrderButton({ style }: { style: StyleData }) {
 
       {open && (
         <ModalPortal>
-          <div className={styles.modalBackdrop}>
+          <div className={styles.modalBackdrop} role="dialog" aria-modal="true">
             <div className={styles.modal}>
-              <h2>Order: {style.title}</h2>
-              <form onSubmit={handleSubmit}>
+              <h2 className={styles.modalTitle}>Order: {style.title}</h2>
+              <form onSubmit={handleSubmit} className={styles.form}>
                 <input
+                  name="fullName"
                   type="text"
                   placeholder="Full Name"
                   value={form.fullName}
-                  onChange={(e) => setForm({ ...form, fullName: e.target.value })}
+                  onChange={handleInputChange}
                   required
+                  className={styles.input}
                 />
                 <input
+                  name="address"
                   type="text"
                   placeholder="Address"
                   value={form.address}
-                  onChange={(e) => setForm({ ...form, address: e.target.value })}
+                  onChange={handleInputChange}
                   required
+                  className={styles.input}
                 />
                 <input
+                  name="phoneNumber"
                   type="tel"
                   placeholder="Phone Number"
                   value={form.phoneNumber}
-                  onChange={(e) => setForm({ ...form, phoneNumber: e.target.value })}
+                  onChange={handleInputChange}
+                  pattern="^[0-9+]{11,15}$"
+                  title="Enter a valid phone number"
                   required
+                  className={styles.input}
                 />
-                <button type="submit" disabled={loading}>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className={styles.submitBtn}
+                >
                   {loading ? 'Sending...' : 'Send Order'}
                 </button>
               </form>
-              {message && <p>{message}</p>}
+
+              {message && <p className={styles.feedback}>{message}</p>}
+
               <button onClick={() => setOpen(false)} className={styles.closeBtn}>
-                Close
+                × Close
               </button>
             </div>
           </div>

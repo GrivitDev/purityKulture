@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import ReactPlayer from './ReactPlayerWrapper';
 import styles from '@/styles/reviewCard.module.css';
 import OrderButton from './OrderButton';
+import Image from 'next/image';
+import { JSX } from 'react';
 
 interface Media {
   url: string;
@@ -31,7 +33,7 @@ export default function ReviewCard({
   onLike: (id: string) => void;
   isExpanded: boolean;
   onToggleExpand: (id: string) => void;
-}) {
+}): JSX.Element {
   const [selectedMedia, setSelectedMedia] = useState<Media | null>(null);
 
   const renderMedia = () => {
@@ -44,7 +46,7 @@ export default function ReviewCard({
         className={`${styles.mediaItem} ${styles[`mediaItem${items.length}-${idx}`]}`}
       >
         {m.type === 'image' ? (
-          <img src={m.url} alt={`media-${idx}`} className={styles.reviewImage} />
+          <Image src={m.url} alt={`media-${idx}`} className={styles.reviewImage} />
         ) : (
           <ReactPlayer
             url={m.url}
@@ -111,7 +113,7 @@ export default function ReviewCard({
         <div className={styles.lightboxOverlay} onClick={() => setSelectedMedia(null)}>
           <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
             {selectedMedia.type === 'image' ? (
-              <img src={selectedMedia.url} alt="fullscreen" />
+              <Image src={selectedMedia.url} alt="fullscreen" />
             ) : (
               <ReactPlayer url={selectedMedia.url} controls width="100%" />
             )}

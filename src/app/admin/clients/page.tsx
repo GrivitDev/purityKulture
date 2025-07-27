@@ -3,6 +3,9 @@
 import { useEffect, useState } from 'react';
 import api from '@/lib/axios';
 import styles from '@/styles/adminReview.module.css';
+import Image from 'next/image';
+import { JSX } from 'react';
+
 
 interface Media {
   url: string;
@@ -20,7 +23,7 @@ interface Review {
   likes: number;
 }
 
-export default function AdminClientWall() {
+export default function AdminClientWall(): JSX.Element   {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [modalImage, setModalImage] = useState<string | null>(null);
 
@@ -67,7 +70,7 @@ export default function AdminClientWall() {
               <div className={styles.mediaBox}>
                 {review.media.map((m, idx) =>
                   m.type === 'image' ? (
-                    <img
+                    <Image
                       key={idx}
                       src={m.url}
                       alt="Client Style"
@@ -104,7 +107,7 @@ export default function AdminClientWall() {
           }}
           onClick={() => setModalImage(null)}
         >
-          <img
+          <Image
             src={modalImage}
             alt="Preview"
             style={{

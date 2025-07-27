@@ -1,13 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
 
-:root {
-  --bg-light: #fdf5f1;
-  --text-dark: #6b4c3b;
-  --card-bg: #ffffff;
-  --accent-color: #eed5dc;
-  --shadow: rgba(0, 0, 0, 0.08);
-  --scrollbar: #d8c6bc;
-}
 
 .collectionsSection {
   padding: 5rem 2rem;

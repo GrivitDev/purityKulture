@@ -4,6 +4,9 @@
 import { useEffect, useState } from 'react';
 import api from '@/lib/axios';
 import styles from '@/styles/adminOrder.module.css';
+import Image from 'next/image';
+import { JSX } from 'react';
+
 
 interface Order {
   _id: string;
@@ -18,7 +21,7 @@ interface Order {
   createdAt: string;
 }
 
-export default function AllOrdersPage() {
+export default function AllOrdersPage(): JSX.Element {
   const [orders, setOrders] = useState<Order[]>([]);
   const [filter, setFilter] = useState<'all' | Order['source']>('all');
 
@@ -59,15 +62,15 @@ export default function AllOrdersPage() {
 
 
       <div className={styles.filters}>
-        {['all', 'collection', 'gallery', 'client-review'].map((src) => (
-          <button
-            key={src}
-            onClick={() => setFilter(src as any)}
-            className={filter === src ? styles.active : ''}
-          >
-            {src.toUpperCase()}
-          </button>
-        ))}
+      {(['all', 'collection', 'gallery', 'client-review'] as const).map((src) => (
+        <button
+          key={src}
+          onClick={() => setFilter(src)}
+          className={filter === src ? styles.active : ''}
+        >
+          {src.toUpperCase()}
+        </button>
+      ))}
       </div>
 
       <div className={styles.orderList}>
@@ -78,7 +81,7 @@ export default function AllOrdersPage() {
             <p><strong>Address:</strong> {order.address}</p>
             <p><strong>Style:</strong> {order.styleTitle}</p>
             {order.mediaType === 'image' ? (
-              <img src={order.mediaUrl} alt="Style" className={styles.media} />
+              <Image src={order.mediaUrl} alt="Style" className={styles.media} />
             ) : (
               <video src={order.mediaUrl} controls className={styles.media} />
             )}

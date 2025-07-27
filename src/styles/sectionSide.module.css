@@ -1,12 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
 
-:root {
-  --primary: var(--lavender);
-  --text-color: var(--deep-brown);
-  --bg-color: var(--off-white);
-  --highlight: var(--dusty-blue);
-  --accent: var(--dusty-pink);
-}
 
 .sideBySideSection {
   display: flex;

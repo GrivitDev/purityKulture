@@ -1,11 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
 
-:root {
-  --primary: var(--lavender);
-  --text: var(--deep-brown);
-  --bg: var(--off-white);
-  --accent: var(--dusty-pink);
-}
 
 .section {
   padding: 3rem 2rem;

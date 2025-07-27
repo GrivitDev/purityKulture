@@ -1,5 +1,6 @@
 'use client';
 
+import { JSX } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import styles from '@/styles/About.module.css';
 
@@ -37,7 +38,7 @@ const barData: BarItem[] = [
   },
 ];
 
-export default function WhatSetsUsApart() {
+export default function WhatSetsUsApart(): JSX.Element {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -48,7 +49,7 @@ export default function WhatSetsUsApart() {
         if (entry.isIntersecting) {
           setVisible(true);
         } else {
-          setVisible(false); // reset on scroll out
+          setVisible(false);
         }
       },
       { threshold: 0.4 }
@@ -65,15 +66,14 @@ export default function WhatSetsUsApart() {
     <section className={styles.diff} ref={sectionRef}>
       <h2>What Sets Us Apart</h2>
       <div className={styles.barsContainer}>
-        {barData.map((item, index) => (
-          <div className={styles.barGroup} key={index}>
+        {barData.map((item) => (
+          <div className={styles.barGroup} key={item.label}>
             <span>{item.label}</span>
             <div className={styles.progressBar}>
               <div
-                className={styles.barFill}
+                className={`${styles.barFill} ${visible ? styles.animate : ''}`}
                 style={{
                   width: visible ? `${item.percentage}%` : '0%',
-                  transition: 'width 1.6s ease',
                 }}
               >
                 <span className={styles.percentText}>

@@ -1,11 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap');
 
-:root {
-  --accent: #b9a7c3;
-  --text: #3a2d28;
-  --bg: #fbf7f3;
-  --whatsapp: #25D366;
-}
 
 .contactContainer {
   font-family: 'Poppins', sans-serif;

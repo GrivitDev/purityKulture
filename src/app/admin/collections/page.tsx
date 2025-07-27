@@ -3,8 +3,10 @@
 import Categories from './Categories';
 import StylesManager from './Styles';
 import styles from '@/styles/adminCollections.module.css';
+import type { JSX } from 'react';
 
-export default function CollectionsDashboard() {
+
+export default function CollectionsDashboard(): JSX.Element {
   return (
     <div className={styles.container}>
       <h1 className={styles.headingMain}>Collections Admin</h1>

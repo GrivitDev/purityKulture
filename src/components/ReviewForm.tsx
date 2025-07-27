@@ -4,8 +4,10 @@ import { useState, useEffect } from 'react';
 import api from '@/lib/axios';
 import styles from '@/styles/reviewForm.module.css';
 import LoadingDots from './LoadingDots';
+import Image from 'next/image';
+import { JSX } from 'react';
 
-export default function ReviewForm({ onSuccess }: { onSuccess: () => void }) {
+export default function ReviewForm({ onSuccess }: { onSuccess: () => void }): JSX.Element {
   const [form, setForm] = useState({
     name: '',
     title: '',
@@ -131,7 +133,7 @@ export default function ReviewForm({ onSuccess }: { onSuccess: () => void }) {
             return (
               <div key={index} className={styles.previewCard}>
                 {type === 'image' ? (
-                  <img src={url} alt={`preview-${index}`} />
+                  <Image src={url} alt={`preview-${index}`} />
                 ) : (
                   <video src={url} controls />
                 )}

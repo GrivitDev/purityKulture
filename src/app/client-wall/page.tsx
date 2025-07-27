@@ -5,7 +5,8 @@ import api from '@/lib/axios';
 import ReviewCard from '@/components/ReviewCard';
 import ReviewForm from '@/components/ReviewForm';
 import styles from '@/styles/review.module.css';
-
+import Image from 'next/image';
+import { JSX } from 'react';
 interface Media {
   url: string;
   type: 'image' | 'video';
@@ -22,30 +23,26 @@ interface Review {
   likes: number;
 }
 
-export default function ClientWallPage() {
+export default function ClientWallPage(): JSX.Element  {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
-  const [total, setTotal] = useState(0);
 
-  const loadReviews = async () => {
-    try {
-      const { data } = await api.get('/client-reviews', {
-        params: { page, limit: 500 },
-      });
+const loadReviews = async () => {
+  try {
+    const { data } = await api.get('/client-reviews', {
+      params: { page, limit: 500 },
+    });
 
-      if (page === 1) {
-        setReviews(data.reviews);
-      } else {
-        setReviews((prev) => [...prev, ...data.reviews]);
-      }
+    const newReviews = page === 1 ? data.reviews : [...reviews, ...data.reviews];
+    setReviews(newReviews);
+    setHasMore(newReviews.length < data.total);
+  } catch (err) {
+    console.error('Failed to load reviews:', err);
+  }
+};
 
-      setHasMore(reviews.length + data.reviews.length < data.total);
-      setTotal(data.total);
-    } catch (err) {
-      console.error('Failed to load reviews:', err);
-    }
-  };
+  
 
   const [expandedReviews, setExpandedReviews] = useState<Record<string, boolean>>({});
 
@@ -80,7 +77,7 @@ const handleToggleExpand = (id: string) => {
   return (
     <main className={styles.reviewContainer}>
       <div className={styles.brandHeader}>
-        <img
+        <Image
           src="/logo.png" // Update this if using a different path
           alt="Purity Kulture Logo"
           className={styles.brandLogo}

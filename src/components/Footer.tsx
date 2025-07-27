@@ -3,20 +3,21 @@
 import Link from 'next/link';
 import { FaFacebookF, FaTiktok, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import styles from '@/styles/footer.module.css';
+import { JSX } from 'react';
 
-export default function Footer() {
+export default function Footer(): JSX.Element {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
         <div className={styles.footerTop}>
-          <div className={styles.footerLinks}>
+          <nav className={styles.footerLinks}>
             <Link href="/">Home</Link>
             <Link href="/about">About</Link>
             <Link href="/collections">Collections</Link>
             <Link href="/gallery">Gallery</Link>
             <Link href="/newsletter">Newsletter</Link>
             <Link href="/contact">Contact</Link>
-          </div>
+          </nav>
 
           <div className={styles.footerButtons}>
             <a
@@ -35,11 +36,39 @@ export default function Footer() {
             </a>
           </div>
 
-          <div className={styles.socialIcons}>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
-            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer"><FaTiktok /></a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-            <a href="https://wa.me/2348164580712" target="_blank" rel="noopener noreferrer"><FaWhatsapp /></a>
+          <div className={styles.socialIcons} aria-label="Social Media Links">
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <FaFacebookF />
+            </a>
+            <a
+              href="https://tiktok.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+            >
+              <FaTiktok />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <FaInstagram />
+            </a>
+            <a
+              href="https://wa.me/2348164580712"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+            >
+              <FaWhatsapp />
+            </a>
           </div>
         </div>
 
@@ -48,7 +77,14 @@ export default function Footer() {
         </p>
 
         <p className={styles.credit}>
-          Website Designer: <a href="https://wa.me/2348164580712?text=Hi%2C%20I%20saw%20your%20work%20on%20Purity%20Kulture%20and%20would%20love%20to%20hire%20you.%20Can%20we%20talk%3F">Grivit</a>
+          Website Designer:{' '}
+          <a
+            href="https://wa.me/2348164580712?text=Hi%2C%20I%20saw%20your%20work%20on%20Purity%20Kulture%20and%20would%20love%20to%20hire%20you.%20Can%20we%20talk%3F"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Grivit
+          </a>
         </p>
       </div>
     </footer>
