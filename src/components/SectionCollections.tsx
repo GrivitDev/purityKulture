@@ -57,31 +57,17 @@ export default function SectionCollections() {
         Explore diverse styles from our curated categories — Bridal, Ankara, Casual, Lace & More.
       </p>
 
-      <div className={styles.collectionGrid}>
+      <div className={styles.collectionScroll}>
         {collections.map((item, index) => (
           <div key={index} className={styles.collectionCard}>
-            <div className={styles.imageWrapper}>
-              <Image
-                src={item.image}
-                alt={item.title}
-                layout="fill"
-                objectFit="cover"
-                className={styles.collectionImage}
-                sizes="(max-width: 768px) 100vw, 33vw"
-                priority={index < 3}
-              />
-            </div>
-            <div className={styles.textWrapper}>
-              <h3 className={styles.collectionTitle}>{item.title}</h3>
-              <p className={styles.collectionDescription}>{item.description}</p>
-            </div>
+            <Image src={item.image} alt={item.title} fill className={styles.collectionImage} />
+            <h3 className={styles.collectionTitle}>{item.title}</h3>
+            <p className={styles.collectionDescription}>{item.description}</p>
           </div>
         ))}
       </div>
 
-      <a href="/collections" className={styles.viewAllBtn}>
-        Explore More Styles
-      </a>
+      <a href="/collections" className={styles.viewAllBtn}>Explore More Styles</a>
     </section>
   );
 }

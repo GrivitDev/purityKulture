@@ -67,6 +67,7 @@ export default function SectionHero(): JSX.Element {
               <Image
                 src={slide.image}
                 alt={slide.heading}
+                fill
                 className={`${styles.heroImage} ${isActive ? styles.imageFloat : ''}`}
               />
               <div
