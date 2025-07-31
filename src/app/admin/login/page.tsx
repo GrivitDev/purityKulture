@@ -31,7 +31,7 @@ export default function AdminLogin(): JSX.Element {
       }
 
       localStorage.setItem('pk_admin_key', 'yes');
-      router.push('/admin/dashboard');
+      router.push('/admin');
     } catch (err: unknown) {
       const message =
         err instanceof Error ? err.message : 'An unexpected error occurred';
