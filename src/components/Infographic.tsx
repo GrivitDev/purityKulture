@@ -1,4 +1,4 @@
-import styles from './Infographic.module.css';
+import styles from './infographic.module.css';
 import { motion } from 'framer-motion';
 
 const data = [
