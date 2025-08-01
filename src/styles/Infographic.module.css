@@ -1,29 +1,7 @@
-.wrapper {
-    position: relative;
-    padding: 4rem 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-    background: #f5f5f5;
-    min-height: 100vh;
-  }
-  
-  .centerStrip {
-    position: absolute;
-    top: 2rem;
-    bottom: 2rem;
-    width: 70%;
-    background: #ffffff;
-    border-radius: 12px;
-    z-index: 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  }
-  
-  .ribbonContainer {
+.ribbonContainer {
     position: relative;
     width: fit-content;
-    z-index: 2;
+    margin: 4rem auto;
   }
   
   .ribbon {
@@ -33,92 +11,67 @@
     z-index: 2;
   }
   
-  /* Main ribbon body */
+  /* Ribbon Body with center-dark gradient */
   .ribbonBody {
-    background: linear-gradient(to right, #4a1c75, #ffffff, #4a1c75);
-    padding: 1rem 2.5rem;
-    color: white;
+    background: linear-gradient(to right, #321253, #ffffff, #321253);
+    padding: 1rem 4rem;
+    color: #fff;
     font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    border-top: 1px solid #ffffff66;
-    border-bottom: 1px solid #00000033;
-    transform: skewX(-2deg);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Curved side caps */
-  .ribbonCapLeft,
-  .ribbonCapRight {
-    width: 20px;
-    height: 60px;
-    background: linear-gradient(to bottom, #321253, #5b109c);
     position: relative;
     z-index: 2;
+    border-top: 1px solid #ffffff33;
+    border-bottom: 1px solid #00000055;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* Curved Sides */
+  .ribbonCapLeft,
+  .ribbonCapRight {
+    width: 30px;
+    height: 60px;
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(to right, #22083b, #ffffff);
   }
   
   .ribbonCapLeft {
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
     margin-right: -1px;
-    background: linear-gradient(to right, #321253, #ffffff);
   }
   
   .ribbonCapRight {
+    background: linear-gradient(to left, #22083b, #ffffff);
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     margin-left: -1px;
-    background: linear-gradient(to left, #321253, #ffffff);
   }
   
-  /* Folded tails */
+  /* Folded Tails */
   .ribbonTailLeft,
   .ribbonTailRight {
     position: absolute;
-    width: 20px;
+    width: 30px;
     height: 30px;
+    background: linear-gradient(to bottom, #28063f, #120021);
     z-index: 1;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
   
+  /* Left Tail: Bottom */
   .ribbonTailLeft {
     left: 0;
-    bottom: -15px;
-    border-bottom-left-radius: 25px;
-    background: linear-gradient(to top, #2c064a, #4b0c7a);
+    bottom: -20px;
+    border-bottom-left-radius: 20px;
   }
   
+  /* Right Tail: Top (Inverted) */
   .ribbonTailRight {
     right: 0;
-    top: -15px;
-    border-top-right-radius: 25px;
-    background: linear-gradient(to bottom, #2c064a, #4b0c7a);
+    top: -20px;
+    border-top-right-radius: 20px;
   }
   
-  /* Text and icons */
-  .letter {
-    font-size: 1.5rem;
-    flex-shrink: 0;
-    transform: skewX(2deg);
-  }
-  
-  .title {
-    font-size: 1.1rem;
-    margin: 0;
-    transform: skewX(2deg);
-  }
-  
-  .description {
-    font-size: 0.9rem;
-    margin: 0;
-    color: #f2f2f2;
-    transform: skewX(2deg);
-  }
-  
-  .icon {
-    font-size: 1.5rem;
-    margin-left: auto;
-    transform: skewX(2deg);
+  .text {
+    white-space: nowrap;
   }
   
