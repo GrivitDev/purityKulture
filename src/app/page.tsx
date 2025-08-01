@@ -10,12 +10,14 @@ import SectionGallery from '@/components/SectionGallery';
 import SectionSideBySide from '@/components/SectionSideBySide';
 import SectionCollections from '@/components/SectionCollections';
 import SectionTestimonials from '@/components/SectionTestimonials';
+import Infographic from '@/components/Infographic';
 
 export default function HomePage(): JSX.Element {
   return (
     <div className={styles.page}>
       <SectionHero />
       <SectionAbout />
+      <Infographic />
       <SectionSpecialties />
       <SectionGallery />
       <SectionSideBySide />

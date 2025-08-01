@@ -6,7 +6,6 @@ import styles from '@/styles/adminCollections.module.css';
 import Image from 'next/image';
 import type { JSX } from 'react';
 
-
 interface Category {
   _id: string;
   name: string;
@@ -18,7 +17,7 @@ interface Style {
   description: string;
   priceMin: number;
   priceMax: number;
-  imageUrl?: string;
+  imageUrls: string[];
   category: Category;
 }
 
@@ -31,7 +30,7 @@ export default function StylesManager(): JSX.Element {
     priceMin: '',
     priceMax: '',
     category: '',
-    image: null as File | null,
+    images: [] as File[],
   });
 
   useEffect(() => {
@@ -39,32 +38,46 @@ export default function StylesManager(): JSX.Element {
   }, []);
 
   const fetchAll = async () => {
-    const cats = await api.get('/admin/categories'); // ✅ matches your backend
+    const cats = await api.get('/admin/categories');
     setCategories(cats.data);
-  
-    const stylesRes = await api.get('/admin/styles'); // ✅
+
+    const stylesRes = await api.get('/admin/styles');
     setStylesList(stylesRes.data);
   };
-  
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (form.images.length < 3 || form.images.length > 6) {
+      return alert('Please upload between 3 and 6 images.');
+    }
+
     const formData = new FormData();
     formData.append('title', form.title);
     formData.append('description', form.description);
     formData.append('priceMin', form.priceMin);
     formData.append('priceMax', form.priceMax);
     formData.append('category', form.category);
-    if (form.image) formData.append('image', form.image);
-  
-    await api.post('/admin/styles', formData); // ✅
-    setForm({ title: '', description: '', priceMin: '', priceMax: '', category: '', image: null });
+    form.images.forEach((img) => formData.append('images', img));
+
+    await api.post('/admin/styles', formData);
+
+    setForm({
+      title: '',
+      description: '',
+      priceMin: '',
+      priceMax: '',
+      category: '',
+      images: [],
+    });
+
     fetchAll();
   };
-  
+
   const handleDelete = async (id: string) => {
-    await api.delete(`/admin/styles/${id}`); // ✅
+    await api.delete(`/admin/styles/${id}`);
     fetchAll();
-  };  
+  };
 
   return (
     <div>
@@ -111,8 +124,9 @@ export default function StylesManager(): JSX.Element {
         <input
           type="file"
           accept="image/*"
+          multiple
           onChange={(e) =>
-            setForm({ ...form, image: e.target.files?.[0] || null })
+            setForm({ ...form, images: Array.from(e.target.files || []) })
           }
         />
         <button type="submit">Add Style</button>
@@ -126,8 +140,14 @@ export default function StylesManager(): JSX.Element {
             <p>
               ₦{style.priceMin} - ₦{style.priceMax}
             </p>
-            {style.imageUrl && (
-              <Image src={style.imageUrl} alt={style.title} className={styles.thumb} />
+            {style.imageUrls?.[0] && (
+              <Image
+                src={style.imageUrls[0]}
+                alt={style.title}
+                width={150}
+                height={150}
+                className={styles.thumb}
+              />
             )}
             <p><em>{style.category?.name}</em></p>
             <button onClick={() => handleDelete(style._id)}>Delete</button>
