@@ -10,7 +10,7 @@ import { JSX } from 'react';
 type Style = {
   _id: string;
   title: string;
-  imageUrl: string;
+  imageUrls: string[]; // ✅ updated to handle multiple images
   description: string;
   priceMin: number;
   priceMax: number;
@@ -26,7 +26,7 @@ type Category = {
   styles: Style[];
 };
 
-export default function CollectionsPage(): JSX.Element  {
+export default function CollectionsPage(): JSX.Element {
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -50,7 +50,7 @@ export default function CollectionsPage(): JSX.Element  {
           return {
             ...cat,
             styles,
-            imageUrl: styles[0]?.imageUrl || '/fallback-category.jpg',
+            imageUrl: styles[0]?.imageUrls?.[0] || '/fallback-category.jpg', // ✅ updated image accessor
           };
         });
 
@@ -61,10 +61,9 @@ export default function CollectionsPage(): JSX.Element  {
         } else {
           console.error('Unknown error while fetching collections:', err);
         }
-      
+
         setError('We encountered an error loading the collections. Please try again later.');
-      }
-       finally {
+      } finally {
         setLoading(false);
       }
     };

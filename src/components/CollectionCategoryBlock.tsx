@@ -9,7 +9,7 @@ import Image from 'next/image';
 type Style = {
   _id: string;
   title: string;
-  imageUrl: string;
+  imageUrls: string[]; // ✅ updated to array
   description: string;
   priceMin: number;
   priceMax: number;
@@ -45,7 +45,6 @@ export default function CollectionCategoryBlock({ category }: { category: Catego
   const isDeleting = useRef<boolean>(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Typing effect
   useEffect(() => {
     const fullText = category.name;
     const typingSpeed = 120;
@@ -78,7 +77,6 @@ export default function CollectionCategoryBlock({ category }: { category: Catego
     };
   }, [category.name]);
 
-  // Emoji animation
   useEffect(() => {
     const emojiKeys = Object.keys(EMOJI_MAP) as (keyof typeof EMOJI_MAP)[];
     category.styles.forEach((style) => {
@@ -161,12 +159,12 @@ export default function CollectionCategoryBlock({ category }: { category: Catego
           return (
             <div key={style._id} className={styles.styleCard}>
               <Image
-                src={style.imageUrl}
+                src={style.imageUrls[0]} // ✅ updated: use first image
                 alt={style.title}
                 width={400}
                 height={400}
                 className={styles.styleImage}
-                onClick={() => setLightboxUrl(style.imageUrl)}
+                onClick={() => setLightboxUrl(style.imageUrls[0])} // ✅ updated
                 role="button"
               />
 
@@ -231,7 +229,7 @@ export default function CollectionCategoryBlock({ category }: { category: Catego
                 <OrderButton
                   style={{
                     title: style.title,
-                    imageUrl: style.imageUrl,
+                    imageUrl: style.imageUrls[0], // ✅ updated
                     mediaType: 'image',
                     source: 'collection',
                   }}
