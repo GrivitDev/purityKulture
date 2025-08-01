@@ -18,14 +18,13 @@ export default function RealisticRibbon() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          {/* Main ribbon center gradient */}
           <linearGradient id="ribbonGradient" x1="0%" y1="50%" x2="100%" y2="50%">
             <stop offset="0%" stopColor="#1a002b" />
-            <stop offset="10%" stopColor="#dcdcdc" />
+            <stop offset="10%" stopColor="#e0e0e0" />
             <stop offset="25%" stopColor="#555" />
             <stop offset="50%" stopColor="#0e0e0e" />
             <stop offset="75%" stopColor="#555" />
-            <stop offset="90%" stopColor="#dcdcdc" />
+            <stop offset="90%" stopColor="#e0e0e0" />
             <stop offset="100%" stopColor="#1a002b" />
           </linearGradient>
         </defs>
@@ -38,15 +37,15 @@ export default function RealisticRibbon() {
             className={styles.ribbonPath}
           />
 
-          {/* Leaf top-left — solid dark */}
+          {/* Top-left leaf (solid dark color) */}
           <path
-            d="M1098.69 1030.07 L1099 1030 C975 1038 920 1007 910 990 C903 975 898.5 964.034 898.5 953.456 L898 945 C898 955 904 984 910 990 C920 1007 975 1038 1098.69 1030.07 Z"
+            d="M1098.69 1030.07 L1099 1030 C958 1046 926 1015 912 994 C903 976 898.5 964.034 898.5 953.456 L898 945 C898 955 904 984 912 994 C926 1015 958 1046 1098.69 1030.07 Z"
             fill="#1a002b"
           />
 
-          {/* Leaf bottom-right — solid dark */}
+          {/* Bottom-right leaf (solid dark color) */}
           <path
-            d="M2595.4 1286.06 C2667 1284 2751 1279 2782 1327 L2789 1341 L2782 1327 L2595.4 1286.06 Z"
+            d="M2595.4 1286.06 C2667 1284 2751 1279 2782 1327 L2789 1341 L2786 1334 L2782 1327 L2595.4 1286.06 Z"
             fill="#1a002b"
           />
         </g>
