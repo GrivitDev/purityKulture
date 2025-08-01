@@ -1,7 +1,29 @@
-.ribbonContainer {
+.wrapper {
+    position: relative;
+    padding: 4rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    background: #f5f5f5;
+    min-height: 100vh;
+  }
+  
+  .centerStrip {
+    position: absolute;
+    top: 2rem;
+    bottom: 2rem;
+    width: 70%;
+    background: #ffffff;
+    border-radius: 12px;
+    z-index: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .ribbonContainer {
     position: relative;
     width: fit-content;
-    margin: 2rem auto;
+    z-index: 2;
   }
   
   .ribbon {
@@ -11,24 +33,28 @@
     z-index: 2;
   }
   
-  /* Center rectangle */
+  /* Main ribbon body */
   .ribbonBody {
-    background: linear-gradient(to right, #8a2be2, #c084f5);
-    padding: 1rem 3rem;
+    background: linear-gradient(to right, #4a1c75, #ffffff, #4a1c75);
+    padding: 1rem 2.5rem;
     color: white;
     font-weight: bold;
-    position: relative;
-    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-top: 1px solid #ffffff66;
+    border-bottom: 1px solid #00000033;
+    transform: skewX(-2deg);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   }
   
-  /* Curved end caps */
+  /* Curved side caps */
   .ribbonCapLeft,
   .ribbonCapRight {
     width: 20px;
     height: 60px;
-    background: linear-gradient(to bottom, #6a1bb3, #5b109c);
+    background: linear-gradient(to bottom, #321253, #5b109c);
     position: relative;
-    top: 0;
     z-index: 2;
   }
   
@@ -36,12 +62,14 @@
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
     margin-right: -1px;
+    background: linear-gradient(to right, #321253, #ffffff);
   }
   
   .ribbonCapRight {
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     margin-left: -1px;
+    background: linear-gradient(to left, #321253, #ffffff);
   }
   
   /* Folded tails */
@@ -50,23 +78,47 @@
     position: absolute;
     width: 20px;
     height: 30px;
-    background: linear-gradient(to bottom, #4b0c7a, #2c064a);
     z-index: 1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
   
   .ribbonTailLeft {
     left: 0;
     bottom: -15px;
     border-bottom-left-radius: 25px;
+    background: linear-gradient(to top, #2c064a, #4b0c7a);
   }
   
   .ribbonTailRight {
     right: 0;
-    bottom: -15px;
-    border-bottom-right-radius: 25px;
+    top: -15px;
+    border-top-right-radius: 25px;
+    background: linear-gradient(to bottom, #2c064a, #4b0c7a);
   }
   
-  .text {
-    white-space: nowrap;
+  /* Text and icons */
+  .letter {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    transform: skewX(2deg);
+  }
+  
+  .title {
+    font-size: 1.1rem;
+    margin: 0;
+    transform: skewX(2deg);
+  }
+  
+  .description {
+    font-size: 0.9rem;
+    margin: 0;
+    color: #f2f2f2;
+    transform: skewX(2deg);
+  }
+  
+  .icon {
+    font-size: 1.5rem;
+    margin-left: auto;
+    transform: skewX(2deg);
   }
   
