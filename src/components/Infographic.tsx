@@ -1,24 +1,15 @@
-import styles from '@/styles/Infographic.module.css';
+import styles from '@/styles/RealisticRibbon.module.css';
 
-export default function Infographic() {
+export default function RealisticRibbon() {
   return (
-    <div className={styles.ribbonContainer}>
-      <div className={styles.ribbon}>
-        {/* Left Leaf */}
-        <div className={styles.ribbonTailLeft} />
-        {/* Left Curve */}
-        <div className={styles.ribbonCapLeft} />
-
-        {/* Body */}
-        <div className={styles.ribbonBody}>
-          <span className={styles.text}>LOREM IPSUM</span>
-        </div>
-
-        {/* Right Curve */}
-        <div className={styles.ribbonCapRight} />
-        {/* Right Leaf */}
-        <div className={styles.ribbonTailRight} />
+    <div className={styles.ribbonWrapper}>
+      <div className={styles.leafLeft} />
+      <div className={styles.extensionLeft} />
+      <div className={styles.ribbonBody}>
+        <span className={styles.text}>LOREM IPSUM</span>
       </div>
+      <div className={styles.extensionRight} />
+      <div className={styles.leafRight} />
     </div>
   );
 }
