@@ -1,54 +1,44 @@
-.cardWrapper {
+.ribbonContainer {
     position: relative;
-    width: fit-content;
-    margin: 4rem auto;
-  }
-  
-  .backgroundCard {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     width: 100%;
-    height: 500px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-  }
-  
-  .ribbonContainer {
-    position: relative;
+    max-width: 1000px;
+    margin: 4rem auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2;
-    transform: translateY(200px);
+    transform: translateX(-100vw);
     opacity: 0;
-    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+    transition: transform 1.5s ease, opacity 1.5s ease;
   }
   
   .flyIn {
-    transform: translateY(0);
+    transform: translateX(0);
     opacity: 1;
   }
   
   .ribbonSVG {
     width: 100%;
     height: auto;
-    max-width: 1000px;
   }
   
   .ribbonPath {
-    stroke: #00000033;
+    fill: url(#ribbonGradient);
+    stroke: #222;
     stroke-width: 2;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.4));
+  }
+  
+  /* Add a gradient dynamically via pseudo defs */
+  .ribbonSVG::before {
+    content: '';
   }
   
   .ribbonText {
     position: absolute;
-    color: #fff;
+    color: white;
     font-weight: bold;
-    font-size: 2.2rem;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    font-size: 1.8rem;
+    text-shadow: 1px 1px 2px black;
+    pointer-events: none;
   }
   
