@@ -1,18 +1,12 @@
 'use client';
 
 import { JSX } from 'react';
-import useInView from '@/hooks/useInView';
 import styles from '@/styles/sectionSide.module.css';
 import Image from 'next/image';
 
 export default function SectionSideBySide(): JSX.Element {
-  const [ref, visible] = useInView({ threshold: 0.25 });
-
   return (
-    <section
-      ref={ref}
-      className={`${styles.sideBySideSection} ${visible ? styles.visible : styles.hidden}`}
-    >
+    <section className={styles.sideBySideSection}>
       <div className={styles.sideText}>
         <h2 className={styles.sectionTitle}>Every Stitch Tells a Story</h2>
         <p className={styles.sectionText}>

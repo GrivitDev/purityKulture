@@ -1,18 +1,12 @@
 'use client';
 
-import useInView from '@/hooks/useInView';
 import Link from 'next/link';
 import styles from '@/styles/sectionAbout.module.css';
 import Image from 'next/image';
 
 export default function SectionAbout() {
-  const [ref, visible] = useInView({ threshold: 0.3 });
-
   return (
-    <section
-      ref={ref}
-      className={`${styles.section} ${styles.aboutSection} ${visible ? styles.visible : styles.hidden}`}
-    >
+    <section className={`${styles.section} ${styles.aboutSection}`}>
       <div className={styles.aboutContent}>
         <div className={styles.aboutImage}>
           <Image

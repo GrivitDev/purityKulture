@@ -1,7 +1,6 @@
 'use client';
 
 import { JSX } from 'react';
-import useInView from '@/hooks/useInView';
 import styles from '@/styles/sectionSpecialties.module.css';
 import Image from 'next/image';
 
@@ -12,8 +11,6 @@ type Specialty = {
 };
 
 export default function SectionSpecialties(): JSX.Element {
-  const [ref, visible] = useInView({ threshold: 0.3 });
-
   const specialties: Specialty[] = [
     { icon: '💃', label: 'Evening Wear', description: 'Graceful gowns for special nights.' },
     { icon: '👗', label: 'Casual Dresses', description: 'Effortless fashion for daily elegance.' },
@@ -24,10 +21,7 @@ export default function SectionSpecialties(): JSX.Element {
   ];
 
   return (
-    <section
-      ref={ref}
-      className={`${styles.specialtiesSection} ${visible ? styles.visible : styles.hidden}`}
-    >
+    <section className={styles.specialtiesSection}>
       <h2 className={styles.sectionTitle}>Our Specialties</h2>
       <div className={styles.circleWrapper}>
         <div className={styles.centerImage}>

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import useInView from '@/hooks/useInView';
 import styles from '@/styles/hero.module.css';
 import Image from 'next/image';
 import { JSX } from 'react';
@@ -12,7 +11,7 @@ const slides = [
     heading: 'Ankara Royalty',
     subtext: 'Bold, vibrant, and rooted in tradition.',
     font: "'Playfair Display', serif",
-    color: '#6b4c3b', // deep brown
+    color: '#6b4c3b',
     animation: styles.typewriterLeft,
     subAnimation: styles.subFloatUp,
     position: 'right',
@@ -23,7 +22,7 @@ const slides = [
     heading: 'Bridal Elegance',
     subtext: 'Purity and grace in every detail.',
     font: "'Great Vibes', cursive",
-    color: '#a4696a', // rosewood
+    color: '#a4696a',
     animation: styles.fadeInRight,
     subAnimation: styles.subFadeInDelay,
     position: 'left',
@@ -34,7 +33,7 @@ const slides = [
     heading: 'Everyday Chic',
     subtext: 'Style that speaks comfort and confidence.',
     font: "'Oswald', sans-serif",
-    color: '#9d7ba6', // mauve
+    color: '#9d7ba6',
     animation: styles.zoomIn,
     subAnimation: styles.subSlideIn,
     position: 'left',
@@ -43,7 +42,6 @@ const slides = [
 ];
 
 export default function SectionHero(): JSX.Element {
-  const [ref, visible] = useInView({ threshold: 0.4 });
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -55,8 +53,7 @@ export default function SectionHero(): JSX.Element {
 
   return (
     <section
-      ref={ref}
-      className={`${styles.heroSection} ${visible ? styles.visible : styles.hidden}`}
+      className={styles.heroSection}
       style={{ backgroundColor: slides[currentSlide].bgColor }}
     >
       {slides.map((slide, index) => {

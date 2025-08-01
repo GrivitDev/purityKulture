@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import useInView from '@/hooks/useInView';
 import api from '@/lib/axios';
 import styles from '@/styles/testimSection.module.css';
 import { JSX } from 'react';
+
 interface Review {
   _id: string;
   title: string;
@@ -20,7 +20,6 @@ function truncateWords(text: string, wordLimit: number): string {
 }
 
 export default function SectionTestimonials(): JSX.Element {
-  const [ref, visible] = useInView({ threshold: 0.3 });
   const [testimonials, setTestimonials] = useState<Review[]>([]);
 
   useEffect(() => {
@@ -44,10 +43,7 @@ export default function SectionTestimonials(): JSX.Element {
   }, []);
 
   return (
-    <section
-      ref={ref}
-      className={`${styles.testimonialSection} ${visible ? styles.visible : styles.hidden}`}
-    >
+    <section className={styles.testimonialSection}>
       <h2 className={styles.sectionTitle}>What Our Clients Say</h2>
 
       <div className={styles.testimonialGrid}>

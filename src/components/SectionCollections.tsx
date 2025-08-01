@@ -1,6 +1,5 @@
 'use client';
 
-import useInView from '@/hooks/useInView';
 import styles from '@/styles/collectionssection.module.css';
 import Image from 'next/image';
 
@@ -48,10 +47,8 @@ const collections = [
 ];
 
 export default function SectionCollections() {
-  const [ref, visible] = useInView({ threshold: 0.3 });
-
   return (
-    <section ref={ref} className={`${styles.collectionsSection} ${visible ? styles.visible : styles.hidden}`}>
+    <section className={styles.collectionsSection}>
       <h2 className={styles.sectionTitle}>Our Collections</h2>
       <p className={styles.sectionText}>
         Explore diverse styles from our curated categories — Bridal, Ankara, Casual, Lace & More.

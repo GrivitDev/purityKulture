@@ -1,13 +1,10 @@
 'use client';
 
 import { JSX } from 'react';
-import useInView from '@/hooks/useInView';
 import styles from '@/styles/galleryHomeSection.module.css';
 import Image from 'next/image';
 
 export default function SectionGallery(): JSX.Element {
-  const [ref, visible] = useInView({ threshold: 0.2 });
-
   const images = [
     { src: '/images/home2.jpg', alt: 'Detailed embroidery on Ankara gown', position: styles.imgTopLeft },
     { src: '/images/home3.jpg', alt: 'Lace dress close-up detail', position: styles.imgTopRight },
@@ -18,8 +15,7 @@ export default function SectionGallery(): JSX.Element {
 
   return (
     <section
-      ref={ref}
-      className={`${styles.gallerySection} ${visible ? styles.visible : styles.hidden}`}
+      className={styles.gallerySection}
       aria-labelledby="gallery-heading"
     >
       <h2 id="gallery-heading" className={styles.sectionTitle}>
@@ -39,7 +35,7 @@ export default function SectionGallery(): JSX.Element {
             width={400}
             height={500}
             className={`${styles.galleryImage} ${img.position}`}
-            priority={index === 4} // Prioritize center image
+            priority={index === 4}
           />
         ))}
       </div>
