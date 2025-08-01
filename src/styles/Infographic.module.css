@@ -1,34 +1,84 @@
-.container {
-    padding: 2rem;
+.wrapper {
+    position: relative;
+    padding: 3rem 1rem;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    align-items: center;
+    gap: 2rem;
+    background-color: #f7f7f7;
+    min-height: 100vh;
+  }
+  
+  .centerStrip {
+    position: absolute;
+    top: 2rem;
+    bottom: 2rem;
+    width: 60%;
     background: #fff;
+    border-radius: 12px;
+    z-index: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
   .ribbon {
+    position: relative;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
     border-radius: 50px;
-    color: #fff;
     font-weight: bold;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transform: skewX(-10deg);
+    width: 80%;
+    z-index: 1;
+    box-shadow:
+      inset 0 -4px 8px rgba(0, 0, 0, 0.15),
+      0 8px 20px rgba(0, 0, 0, 0.15);
+    background-size: 200% auto;
+    color: white;
+  }
+  
+  .ribbon::before,
+  .ribbon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    background: inherit;
+    z-index: -1;
+  }
+  
+  .ribbon::before {
+    left: -20px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    box-shadow: inset 4px 0 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ribbon::after {
+    right: -20px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    box-shadow: inset -4px 0 8px rgba(0, 0, 0, 0.1);
   }
   
   .letter {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    margin-right: 1rem;
     flex-shrink: 0;
+  }
+  
+  .text {
+    flex-grow: 1;
   }
   
   .icon {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    margin-left: 1rem;
     flex-shrink: 0;
   }
   
-  /* Gradient Colors */
+  /* Ribbon Color Themes */
   .ribbonPurple {
     background: linear-gradient(90deg, #a044ff, #6a3093);
   }
